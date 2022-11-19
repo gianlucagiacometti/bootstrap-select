@@ -1,5 +1,6 @@
 # bootstrap-select
-Extension class for the Bootstrap select element
+
+Extension class for the Bootstrap (https://getbootstrap.com) Select element
 
 This program is written in plain JavaScript and is designed for Bootstrao 5.2.x and modern browsers.
 
@@ -8,9 +9,10 @@ The minimum version of ECMAScript is 2017. I reserve the right to switch to newe
 Although the W3C Recommendations do not mention it for HTML 5, the HTML 4.01 Recommendations (https://www.w3.org/TR/html401/interact/forms.html#h-17.6) state that: "Note. Implementors are advised that future versions of HTML may extend the grouping mechanism to allow for nested groups (i.e., OPTGROUP elements may nest). This will allow authors to represent a richer hierarchy of choices."
 For this reason the bsSelect class is already recursive.
 
-The bsSelect class uses the Input and the Dropdown element of Bootstrap for a maximum level of compatibility.
+The bsSelect class uses the Input and the Dropdown elements of Bootstrap, for a maximum level of compatibility.
 
 This program is released under the MIT licence.
+
 
 ## Usage
 
@@ -86,6 +88,7 @@ You may:
 |----------|---------|---------|-----------------------------------------------|
 | disabled | boolean | false   | Disables the &lt;option&gt; element.          |
 | selected | boolean | false   | Marks the &lt;option&gt; element as selected. |
+
 
 ## Methods
 
