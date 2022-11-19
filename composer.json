@@ -1,4 +1,18 @@
 {
+    "name": "gianlucagiacometti/boostrap-select",
+    "description": "Extension for the Boostrap select element",
+    "keywords": ["bootstrap","select"],
+    "homepage": "https://github.com/gianlucagiacometti/bootstrap-select/",
+    "license": "MIT",
+    "type": "bootstrap-extension",
+    "version": "1.5.2.2",
+    "authors": [
+    {
+      "name": "Gianluca Giacometti",
+      "email": "php@gianlucagiacometti.it",
+      "role": "Developer"
+    }
+  ],
     "require": {
         "twbs/bootstrap": "^5.2",
         "twbs/bootstrap-icons": "^1.9"
