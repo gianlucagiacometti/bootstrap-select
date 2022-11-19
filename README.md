@@ -24,7 +24,7 @@ Boostrap Icons >= 1.9 (only if option images are used)
 
 Add these lines in the html &lt;head&gt; section:
 
-    <link rel="stylesheet/less" type="text/css" href="bootstrap.select.less">
+    <link rel="stylesheet/less" type="text/css" href="bootstrap.select.css">
     <script src="bootstrap.select.js"></script>
 
 NOTE: the values of "href" and "src" attributes must reproduce the folder structure where the two files are located.
