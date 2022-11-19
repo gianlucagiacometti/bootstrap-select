@@ -42,11 +42,16 @@ You may:
 	    let randomIndex = "" + Date.now() + Math.floor(Math.random()*1000)
 	    let mySelectElement = new bsSelect("myselect", randomIndex)
 
-## Optional classes for the &lt;select&gt; element
+## Options
+
+### Optional classes for the &lt;select&gt; element
+
+| Class          | Description                                                                                     |
+|----------------|-------------------------------------------------------------------------------------------------|
+| label-floating | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with a floating label. |
 
 
-
-## Optional properties for &lt;select&gt; element
+### Optional properties for &lt;select&gt; element
 
 | Property | Type    | Default | Description                                       |
 |----------|---------|---------|---------------------------------------------------|
@@ -54,7 +59,7 @@ You may:
 | multiple | boolean | false   | Creates a multiple choice &lt;select&gt; element. |
 
 
-## Optional attributes for the &lt;option&gt; element
+### Optional attributes for the &lt;option&gt; element
 
 | Attribute                         | Type         | Description                                                                                                                                                                                                |
 |-----------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -65,5 +70,11 @@ You may:
 | data-bs-select-option-comment     | text or html | The content of the comment which will be inserted below the text of the &lt;option&gt; element. The comment has a default style. All additional styles must be specified in the html as classes or inline styles.  |
 
 
-## Optional properties for the &lt;option&gt; element
-		
+### Optional properties for the &lt;option&gt; element
+
+| Property | Type    | Default | Description                                   |
+|----------|---------|---------|-----------------------------------------------|
+| disabled | boolean | false   | Disables the &lt;option&gt; element.          |
+| selected | boolean | false   | Marks the &lt;option&gt; element as selected. |
+
+## Methods
