@@ -14,6 +14,12 @@ The bsSelect class uses the Input and the Dropdown elements of Bootstrap, for a 
 This program is released under the MIT licence.
 
 
+## Requires
+
+Bootstrap >= 5.2
+Boostrap Icons >= 1.9 (only if option images are used)
+
+
 ## Usage
 
 Add these lines in the html &lt;head&gt; section:
