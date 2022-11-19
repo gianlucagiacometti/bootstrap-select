@@ -19,11 +19,24 @@ Add these lines in the html &lt;head&gt; section:
 
 NOTE: the values of "href" and "src" attributes must reproduce the folder structure where the two files are located.
 
-Add to the &lt;select&gt; element the class "bootstrap-select".
-
-The "bootstrap-select" class may also be added dynamically via JavaScript when the DOM is already loaded.
-
 The "selectInserted" CSS animation provides an authomatic way to create a new bsSelect class element.
 
-The new class element can be also added manually via JavaScript without using the "bootstrap-select" class.
+You may:
+
+1. Add to the &lt;select&gt; element the class "bootstrap-select".
+
+        <select id="myselect" class="bootstrap-select">...</select>
+
+2. Add the "bootstrap-select" class dynamically via JavaScript when the DOM is already loaded.
+
+        <select id="myselect">...</select>
+    
+        document.querySelector("#myselect").classList.add("bootstrap-select")
+
+3. Create a new class element manually via JavaScript without using the "bootstrap-select" class (the value of randomIndex must be a 16 digit integer).
+
+        <select id="myselect">...</select>
+
+	    let randomIndex = "" + Date.now() + Math.floor(Math.random()*1000)
+	    let mySelectElement = new bsSelect("myselect", randomIndex)
 
