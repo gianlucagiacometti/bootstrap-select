@@ -51,7 +51,14 @@ You may:
 
 
 ## Optional attributes for the &lt;option&gt; element
-		
+
+| Attribute                         | Type         | Description                                                                                                                                                                                                |
+|-----------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| data-bs-select-option-icon        | text         | The name of the Bootstrap icon which will be prepended to the text of the option element (without "bi-").                                                                                                    |
+| data-bs-select-option-icon-class  | text         | The name of the class which will be added to the &lt;i&gt; element of the icon.                                                                                                                            |
+| data-bs-select-option-image       | text         | The "src" attribute of the image which will be inserted at the very right of the text of the option element.                                                                                               |
+| data-bs-select-option-image-class | text         | The name of the class which will be added to the &lt;img&gt; element of the option image.                                                                                                                  |
+| data-bs-select-option-comment     | text or html | The content of the comment which will be inserted below the text of the option element. The comment has a default style. All additional styles must be specified in the html as classes or inline styles.  |
 
 
 ## Optional properties for the &lt;option&gt; element
