@@ -20,7 +20,10 @@ Add these lines in the html &lt;head&gt; section:
 NOTE: the values of "href" and "src" attributes must reproduce the folder structure where the two files are located.
 
 Add to the &lt;select&gt; element the class "bootstrap-select".
+
 The "bootstrap-select" class may also be added dynamically via JavaScript when the DOM is already loaded.
+
 The "selectInserted" CSS animation provides an authomatic way to create a new bsSelect class element.
+
 The new class element can be also added manually via JavaScript without using the "bootstrap-select" class.
 
