@@ -32,7 +32,7 @@ You may:
 2. Add the "bootstrap-select" class dynamically via JavaScript when the DOM is already loaded.
 
         <select id="myselect">...</select>
-    
+
         document.querySelector("#myselect").classList.add("bootstrap-select")
 
 3. Create a new class element manually via JavaScript without using the "bootstrap-select" class (the value of randomIndex must be a 16-digit string).
@@ -40,9 +40,19 @@ You may:
         <select id="myselect">...</select>
 
 	    let randomIndex = "" + Date.now() + Math.floor(Math.random()*1000)
-	    let mySelectElement = new bsSelect("myselect", randomIndex)
+	    let mySelectElement = new bsSelect("myselect", randomIndex, classElementParameters)
+
+	    # The classElementParameters is an optional object. The default value is {}.
+
 
 ## Options
+
+### Optional parameters for the Class element 
+
+| Property   | Type | Default   | Accepted values     | Description                                                        |
+|------------|------|-----------|---------------------|--------------------------------------------------------------------|
+| visibility | text | collapsed | collapsed, expanded | Sets the visibility of the dropdown menu at the time of creation.  |
+
 
 ### Optional classes for the &lt;select&gt; element
 
@@ -78,3 +88,4 @@ You may:
 | selected | boolean | false   | Marks the &lt;option&gt; element as selected. |
 
 ## Methods
+
