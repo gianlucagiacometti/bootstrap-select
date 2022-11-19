@@ -35,11 +35,24 @@ You may:
     
         document.querySelector("#myselect").classList.add("bootstrap-select")
 
-3. Create a new class element manually via JavaScript without using the "bootstrap-select" class (the value of randomIndex must be a 16 digit integer).
+3. Create a new class element manually via JavaScript without using the "bootstrap-select" class (the value of randomIndex must be a 16-digit string).
 
         <select id="myselect">...</select>
 
 	    let randomIndex = "" + Date.now() + Math.floor(Math.random()*1000)
 	    let mySelectElement = new bsSelect("myselect", randomIndex)
 
-## Data attributes
+## Optional classes for the &lt;select&gt; element
+
+
+
+## Optional properties for &lt;select&gt; element
+
+
+
+## Optional attributes for the &lt;option&gt; element
+		
+
+
+## Optional properties for the &lt;option&gt; element
+		
