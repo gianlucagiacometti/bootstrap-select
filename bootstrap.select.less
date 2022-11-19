@@ -1,0 +1,220 @@
+/**
+ *
+ * Bootstrap Select Stylesheet File
+ *
+ * Bootstrap select is an extension class for the Bootstrap select element
+ *
+ * @author Gianluca Giacometti
+ *
+ * Copyright (C) Gianluca Giacometti (https://github.com/gianlucagiacometti)
+ *
+ * This program provides a class which extends the Bootstrap select element.
+ * This program requires Bootstrap (https://getbootstrap.com) 
+ * For more information see README.md.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the MIT License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ */
+
+@select-hover-background-color: rgba(0, 0, 0, .05);
+@select-disabled-color: rgba(150, 150, 150, .8);
+
+@keyframes selectInserted {
+        from { opacity: 0.99; }
+        to { opacity: 1; }
+}
+
+.bootstrap-select {
+        animation-duration: 0.001s;
+        -o-animation-duration: 0.001s;
+        -ms-animation-duration: 0.001s;
+        -moz-animation-duration: 0.001s;
+        -webkit-animation-duration: 0.001s;
+        animation-name: selectInserted;
+        -o-animation-name: selectInserted;
+        -ms-animation-name: selectInserted;
+        -moz-animation-name: selectInserted;
+        -webkit-animation-name: selectInserted;
+}
+
+.select {
+
+	&-input {
+		cursor: pointer;
+
+		&-wrapper {
+			position: relative;
+
+			&::after {
+				position: absolute !important;
+				bottom: 1rem !important;
+				right: .6rem !important;
+			}
+		}
+	}
+
+	&-dropdown {
+
+		&-wrapper {
+			width: 100% !important;
+			padding: .25rem;
+		}
+	}
+
+	&-option {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		overflow: hidden;
+		white-space: nowrap;
+		width: 100%;
+		padding: .25rem;
+
+		&-wrapper {
+
+			&:hover:not(.disabled) {
+				background-color: @select-hover-background-color;
+				cursor: pointer;
+
+				& input {
+					cursor: inherit;
+				}
+
+				& label {
+					cursor: inherit;
+				}
+			}
+
+			&.disabled {
+				color: @select-disabled-color;
+			}
+
+			&.selected:not(.disabled) {
+				background-color: @select-hover-background-color;
+			}
+		}
+
+		&-list {
+			margin: 0.25rem;
+
+			&-wrapper {
+				overflow-y: scroll;
+				max-height: 50vh;
+			}
+
+			& .form-check {
+				padding-left: 1.75em;
+
+				&-input {
+					margin-top: .65em;
+				}
+			}
+		}
+
+		&-label {
+			width: 100%;
+		}
+
+		&-text {
+			vertical-align: middle;
+
+			&-wrapper {
+				width: 100%;
+
+				& > i {
+					vertical-align: middle;
+				}
+			}
+		}
+
+		&-image {
+			width: 28px;
+			height: 28px;
+
+			&-wrapper {
+				float: right;
+			}
+		}
+
+		&-comment {
+			font-size: .85rem;
+			text-decoration: italic;
+			padding: 0 .25rem .25rem .25rem;
+			transform: translateY(-0.5rem);
+		}
+
+		&-checkbox {
+			position: relative;
+			z-index: -1;
+		}
+
+		&-group {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			overflow: hidden;
+			white-space: nowrap;
+			width: 100%;
+			padding: .25rem;
+
+			&-list {
+				margin: 0.25rem;
+
+				&-wrapper {
+					overflow-y: scroll;
+					max-height: 50vh;
+				}
+
+				& .form-check {
+					padding-left: 1.75em;
+
+					&-input {
+						margin-top: .65em;
+					}
+				}
+			}
+
+			&-label {
+				width: 100%;
+			}
+
+			&-text {
+				vertical-align: middle;
+
+				&-wrapper {
+					width: 100%;
+
+					& > i {
+						vertical-align: middle;
+					}
+				}
+			}
+
+			&-image {
+				width: 28px;
+				height: 28px;
+
+				&-wrapper {
+					float: right;
+				}
+			}
+
+			&-comment {
+				font-size: .85rem;
+				text-decoration: italic;
+				padding: 0 .25rem .25rem .25rem;
+				transform: translateY(-0.5rem);
+			}
+
+			&-children {
+				margin-left: 1rem;
+			}
+		}
+	}
+
+}
