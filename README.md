@@ -17,6 +17,7 @@ This program is released under the MIT licence.
 ## Requires
 
 Bootstrap >= 5.2
+
 Boostrap Icons >= 1.9 (only if option images are used)
 
 
