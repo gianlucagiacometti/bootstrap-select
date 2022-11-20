@@ -188,7 +188,7 @@ class bsSelect {
 			let item = ""
 			let itemDisabled = child.disabled ? ' disabled' : ''
 			let itemSelected = child.selected ? ' selected' : ''
-			let itemChecked = child.selected ? ' checked' : ''
+			let itemChecked = child.selected && !child.disabled ? ' checked' : ''
 			let iconClass = child.dataset.bsSelectOptionIconClass ? ' ' + child.dataset.bsSelectOptionIconClass : ''
 			let icon = child.dataset.bsSelectOptionIcon ? '<i class="bi bi-' + child.dataset.bsSelectOptionIcon + ' me-2' + iconClass + '"></i>' : ''
 			let imageClass = child.dataset.bsSelectOptionImageClass ? ' ' + child.dataset.bsSelectOptionImageClass : ''
@@ -651,7 +651,7 @@ class bsSelect {
 				let item = ""
 				let itemDisabled = option.disabled ? ' disabled' : ''
 				let itemSelected = option.selected ? ' selected' : ''
-				let itemChecked = option.selected ? ' checked' : ''
+				let itemChecked = option.selected && !option.disabled ? ' checked' : ''
 				let iconClass = option.dataset.bsSelectOptionIconClass ? ' ' + option.dataset.bsSelectOptionIconClass : ''
 				let icon = option.dataset.bsSelectOptionIcon ? '<i class="bi bi-' + option.dataset.bsSelectOptionIcon + ' me-2' + iconClass + '"></i>' : ''
 				let imageClass = option.dataset.bsSelectOptionImageClass ? ' ' + option.dataset.bsSelectOptionImageClass : ''
@@ -761,7 +761,9 @@ class bsSelect {
 					if ((options['disabled'] || (!options['disabled'] && !this.options[rnd].disabled)) && (values.indexOf(this.options[rnd].value) >= 0)) {
 						this.options[rnd].selected = true
 						document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).classList.add("selected")
-						document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked = true
+						if (!options['disabled']) {
+							document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked = true
+						}
 					}
 					else if (this.options[rnd].disabled && (values.indexOf(this.options[rnd].value) >= 0)) {
 						console.warn("Warning: Trying to select the disabled option vith value " + this.options[rnd].value + "; use `.value(value, { disabled: true })` to select disabled options")
