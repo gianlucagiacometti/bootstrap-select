@@ -113,3 +113,4 @@ You may:
 ## Future implementations
 
 1. Make the select searchable
+2. Checkbox to select or de-select all options in a multiple select
