@@ -1,1 +1,3 @@
 example.html -linguist-documentation
+*.js linguist-detectable
+*.css linguist-detectable
