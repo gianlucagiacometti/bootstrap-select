@@ -55,6 +55,21 @@
   width: 100% !important;
   padding: 0.25rem;
 }
+.select-search-wrapper {
+  margin-bottom: 0.25rem;
+  border: none;
+  padding: 0.25rem;
+}
+.select-search-input {
+  width: 100%;
+}
+.select-search-icon {
+  float: right;
+  position: absolute;
+  right: 1rem;
+  top: 0.65rem;
+  cursor: pointer;
+}
 .select-option {
   display: flex;
   flex-direction: row;

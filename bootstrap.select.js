@@ -133,6 +133,16 @@ class bsSelect {
 		list.innerHTML = this.#wrapOptions(this.element.children)
 
 		options.appendChild(list)
+
+		if (this.element.classList.contains("searchable")) {
+			let searchText = this.element.dataset.bsSelectSearchText ? this.element.dataset.bsSelectSearchText : "Search..."
+			let search = document.createElement("div")
+			search.id = "select-search-wrapper-" + this.seq
+			search.classList.add("form-control", "select-search-wrapper")
+			search.innerHTML = '<input id="select-search-input-' + this.seq + '" class="select-search-input" value="" placeholder="' + searchText + '"><i id="select-search-icon-' + this.seq + '" class="bi bi-x-lg select-search-icon"></i>'
+			dropdown.appendChild(search)
+		}
+
 		dropdown.appendChild(options)
 		wrapper.appendChild(dropdown)
 		document.querySelector("#select-input-wrapper-" + this.seq).appendChild(wrapper)
@@ -146,6 +156,45 @@ class bsSelect {
 			}
 			bootstrap.Dropdown.getOrCreateInstance("#select-input-wrapper-" + self.seq).toggle()
 		})
+
+		if (this.element.classList.contains("searchable")) {
+			document.querySelector("#select-search-input-" + this.seq).addEventListener('input', function(event) {
+				let value = String(event.target.value).toLowerCase()
+				if (value.length > 0) {
+					for (let rnd of Object.keys(self.options)) {
+						if (!self.optionGroups.includes(rnd) && self.options[rnd].text.toLowerCase().includes(value)) {
+							document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.remove("d-none")
+						}
+						else if (!self.optionGroups.includes(rnd)) {
+							document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.add("d-none")
+						}
+					}
+				}
+				else {
+					for (let rnd of Object.keys(self.options)) {
+						if (!self.optionGroups.includes(rnd)) {
+							document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.remove("d-none")
+						}
+					}
+				}
+			})
+			document.querySelector("#select-search-icon-" + this.seq).addEventListener('click', function(event) {
+				document.querySelector("#select-search-input-" + self.seq).value = ""
+				for (let rnd of Object.keys(self.options)) {
+					if (!self.optionGroups.includes(rnd)) {
+						document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.remove("d-none")
+					}
+				}
+			})
+			document.querySelector("#select-wrapper-" + this.seq).addEventListener('hidden.bs.dropdown', function() {
+				document.querySelector("#select-search-input-" + self.seq).value = ""
+				for (let rnd of Object.keys(self.options)) {
+					if (!self.optionGroups.includes(rnd)) {
+						document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.remove("d-none")
+					}
+				}
+			})
+		}
 
 		for (let rnd of Object.keys(this.options)) {
 			if (!this.options[rnd].disabled && !this.optionGroups.includes(rnd)) {

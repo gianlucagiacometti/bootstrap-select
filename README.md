@@ -18,7 +18,7 @@ This program is released under the MIT licence.
 
 Bootstrap >= 5.2
 
-Boostrap Icons >= 1.9 (only if option images are used)
+Boostrap Icons >= 1.9 (used only by search and option images)
 
 
 ## Usage
@@ -112,5 +112,4 @@ You may:
 
 ## Futher implementations
 
-1. Make the select searchable
-2. Checkbox to select or de-select all options in a multiple select
+1. Checkbox to select or de-select all options in a multiple select
