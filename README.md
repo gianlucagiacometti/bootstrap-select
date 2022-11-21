@@ -14,7 +14,7 @@ The bsSelect class uses the Input and the Dropdown elements of Bootstrap, for a 
 This program is released under the MIT licence.
 
 
-## Requires
+## Requirements
 
 Bootstrap >= 5.2
 
