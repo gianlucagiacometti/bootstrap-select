@@ -1,3 +1,1 @@
 *.html linguist-detectable=false
-bootstrap.select.js -linguist-language=JavaScript
-bootstrap.select.css -linguist-language=CSS
