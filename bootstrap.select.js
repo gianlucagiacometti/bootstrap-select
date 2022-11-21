@@ -202,15 +202,32 @@ class bsSelect {
 					if (self.multiple) {
 						document.querySelector("#select-option-checkbox-" + self.seq + "-" + rnd).checked = !document.querySelector("#select-option-checkbox-" + self.seq + "-" + rnd).checked
 						self.options[rnd].selected = document.querySelector("#select-option-checkbox-" + self.seq + "-" + rnd).checked
-						document.querySelector("#" + self.id + " option[value='" + self.options[rnd].value + "']").selected = self.options[rnd].selected
 						if (self.options[rnd].selected) {
 							document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.add("selected")
+							if ((self.optionParents[rnd] != "0") && Object.keys(self.options).includes(self.optionParents[rnd])) { 
+								let selected = true
+								for (let child of self.options[self.optionParents[rnd]].children) {
+									if (!child.selected) {
+										selected = false
+										break
+									}
+								}
+								if (selected) {
+									self.options[self.optionParents[rnd]].selected = true
+									document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + self.optionParents[rnd]).checked = true
+									document.querySelector("#select-option-group-wrapper-" + self.seq + "-" + self.optionParents[rnd]).classList.add("selected")
+								}
+							}
 						}
 						else {
 							document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.remove("selected")
+							if (Object.keys(self.options).includes(self.optionParents[rnd])) { 
+								self.options[self.optionParents[rnd]].selected = false
+								document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + self.optionParents[rnd]).checked = false
+								document.querySelector("#select-option-group-wrapper-" + self.seq + "-" + self.optionParents[rnd]).classList.remove("selected")
+							}
 						}
 						document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
-						e.preventDefault()
 					}
 					else {
 						document.querySelector("#select-input-" + self.seq).value = document.querySelectorAll("#select-option-wrapper-" + self.seq + "-" + rnd + " .select-option-text")[0].innerHTML
@@ -221,11 +238,48 @@ class bsSelect {
 						self.options[rnd].selected = true
 						document.querySelector("#" + self.id).value = self.options[rnd].value
 					}
+					e.preventDefault()
+				})
+			}
+			else if (self.multiple && this.optionGroups.includes(rnd)) {
+				document.querySelector("#select-option-group-wrapper-" + this.seq + "-" + rnd + " > div.form-check").addEventListener('click', function(e) {
+					document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked = !document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked
+					self.#setDescendantsAlike(self.options[rnd])
+					document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
+					e.preventDefault()
 				})
 			}
 		}
 
 	} // constructor
+
+	#setDescendantsAlike(element) {
+		let checked = document.querySelector("#select-option-group-checkbox-" + this.seq + "-" + element.dataset.rnd).checked
+		let children = element.querySelectorAll("option", "optgroup")
+		for (let child of children) {
+			let rnd = child.dataset.rnd
+			if (child.tagName == "OPTGROUP") {
+				document.querySelector("#select-option-group-checkbox-" + this.seq + "-" + rnd).checked = checked
+				if (checked) {
+					document.querySelector("#select-option-group-wrapper-" + this.seq + "-" + rnd).classList.add("selected")
+				}
+				else {
+					document.querySelector("#select-optiongroup--wrapper-" + this.seq + "-" + rnd).classList.remove("selected")
+				}
+				this.#setDescendantsAlike(child)
+			}
+			else {
+				child.selected = checked
+				document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked = checked
+				if (checked) {
+					document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).classList.add("selected")
+				}
+				else {
+					document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).classList.remove("selected")
+				}
+			}
+		}
+	}
 
 	#wrapOptions(children, parent = 0) {
 		let list = ""
@@ -276,7 +330,7 @@ class bsSelect {
 
 	#sortedChanged(obj1, obj2) {
 		if (!obj1 || Object.getPrototypeOf(obj1) !== Object.prototype || !obj2 || Object.getPrototypeOf(obj2) !== Object.prototype) {
-			throw new TypeError("Attributes of #sortedChanged are not acceptable objects", "bootstrap.select.js", 228)
+			throw new TypeError("Attributes of #sortedChanged are not acceptable objects", "bootstrap.select.js", 331)
 		}
 		if (JSON.stringify(obj1) === JSON.stringify(obj2)) {
 			return false
@@ -321,7 +375,7 @@ class bsSelect {
 			return opt1.label.localeCompare(opt2.label)
 		}
 		else {
-			throw new TypeError("Attributes of #compareSelectChildren are not acceptable objects", "bootstrap.select.js", 261)
+			throw new TypeError("Attributes of #compareSelectChildren are not acceptable objects", "bootstrap.select.js", 364)
 		}
 	} // #compareSelectChildren
 
@@ -914,3 +968,5 @@ let insertListener = (e) => {
 document.addEventListener("animationstart", insertListener)
 document.addEventListener("MSAnimationStart", insertListener)
 document.addEventListener("webkitAnimationStart", insertListener)
+
+ /* END OF FILE */
