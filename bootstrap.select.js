@@ -90,6 +90,10 @@ class bsSelect {
 			input.classList.add("form-control-sm")
 		}
 
+		if (this.element.classList.contains("form-select-plaintext")) {
+			input.classList.add("form-control-plaintext")
+		}
+
 		if (this.element.disabled) {
 			input.disabled = true
 		}

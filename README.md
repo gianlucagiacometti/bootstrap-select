@@ -65,10 +65,13 @@ You may:
 
 ### Optional classes for the &lt;select&gt; element
 
-| Class          | Description                                                                                     |
-|----------------|-------------------------------------------------------------------------------------------------|
-| label-floating | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with a floating label. |
-| searchable     | Makes the &lt;select&gt; element searchable                                                     |
+| Class                 | Description                                                                                                           |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------|
+| form-select-lg        | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with the class <b>form-control-lg</b>        |
+| form-select-sm        | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with the class <b>form-control-sm</b>        |
+| form-select-plaintext | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with the class <b>form-control-plaintext</b> |
+| label-floating        | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with a floating label.                       |
+| searchable            | Makes the &lt;select&gt; element searchable                                                                           |
 
 
 ### Optional properties for &lt;select&gt; element
