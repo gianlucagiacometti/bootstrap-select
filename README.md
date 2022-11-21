@@ -89,6 +89,14 @@ You may:
 | data-bs-search-text | text | The <b>placeholder</b> text in the search input field. If this attribute is not used, the default <b>placeholder</b> text will be: "Search..." |
 
 
+### Optional properties for the &lt;option&gt; element
+
+| Property | Type    | Default | Description                                   |
+|----------|---------|---------|-----------------------------------------------|
+| disabled | boolean | false   | Disables the &lt;option&gt; element.          |
+| selected | boolean | false   | Marks the &lt;option&gt; element as selected. |
+
+
 ### Optional attributes for the &lt;option&gt; element
 
 | Attribute                         | Type         | Description                                                                                                                                                                                                |
@@ -98,14 +106,6 @@ You may:
 | data-bs-select-option-image       | text         | The "src" attribute of the image which will be inserted at the very right of the text of the &lt;option&gt; element.                                                                                               |
 | data-bs-select-option-image-class | text         | The name of the class which will be added to the &lt;img&gt; element of the &lt;option&gt; image.                                                                                                                  |
 | data-bs-select-option-comment     | text or html | The content of the comment which will be inserted below the text of the &lt;option&gt; element. The comment has a default style. All additional styles must be specified in the html as classes or inline styles.  |
-
-
-### Optional properties for the &lt;option&gt; element
-
-| Property | Type    | Default | Description                                   |
-|----------|---------|---------|-----------------------------------------------|
-| disabled | boolean | false   | Disables the &lt;option&gt; element.          |
-| selected | boolean | false   | Marks the &lt;option&gt; element as selected. |
 
 
 ## Methods
