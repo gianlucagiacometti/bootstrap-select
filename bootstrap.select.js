@@ -805,29 +805,49 @@ class bsSelect {
 				this.optionPiles[parent][0].push(rnd)
 
 				if (!option.disabled) {
+					let self = this
 					document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).addEventListener('click', function(e) {
-						if (this.multiple) {
-							document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked = !document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked
-							this.options[rnd].selected = document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked
-							document.querySelector("#" + this.id + " option[value='" + this.options[rnd].value + "']").selected = this.options[rnd].selected
-							if (this.options[rnd].selected) {
-								document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).classList.add("selected")
+						if (self.multiple) {
+							document.querySelector("#select-option-checkbox-" + self.seq + "-" + rnd).checked = !document.querySelector("#select-option-checkbox-" + self.seq + "-" + rnd).checked
+							self.options[rnd].selected = document.querySelector("#select-option-checkbox-" + self.seq + "-" + rnd).checked
+							document.querySelector("#" + self.id + " option[value='" + self.options[rnd].value + "']").selected = self.options[rnd].selected
+							if (self.options[rnd].selected) {
+								document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.add("selected")
+								if ((self.optionParents[rnd] != "0") && Object.keys(self.options).includes(self.optionParents[rnd])) { 
+									let selected = true
+									for (let child of self.options[self.optionParents[rnd]].children) {
+										if (!child.selected) {
+											selected = false
+											break
+										}
+									}
+									if (selected) {
+										self.options[self.optionParents[rnd]].selected = true
+										document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + self.optionParents[rnd]).checked = true
+										document.querySelector("#select-option-group-wrapper-" + self.seq + "-" + self.optionParents[rnd]).classList.add("selected")
+									}
+								}
 							}
 							else {
-								document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).classList.remove("selected")
+								document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.remove("selected")
+								if (Object.keys(self.options).includes(self.optionParents[rnd])) { 
+									self.options[self.optionParents[rnd]].selected = false
+									document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + self.optionParents[rnd]).checked = false
+									document.querySelector("#select-option-group-wrapper-" + self.seq + "-" + self.optionParents[rnd]).classList.remove("selected")
+								}
 							}
-							document.querySelector("#select-input-" + this.seq).value = [...this.element.selectedOptions].map(item => item.text).join()
-							e.preventDefault()
+							document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
 						}
 						else {
-							document.querySelector("#select-input-" + this.seq).value = document.querySelectorAll("#select-option-wrapper-" + this.seq + "-" + rnd + " .select-option-text")[0].innerHTML
-							document.querySelector("#select-dropdown-wrapper-" + this.seq).classList.remove("show")
-							for (let i of Object.keys(this.options)) {
-								this.options[i].selected = false
+							document.querySelector("#select-input-" + self.seq).value = document.querySelectorAll("#select-option-wrapper-" + self.seq + "-" + rnd + " .select-option-text")[0].innerHTML
+							document.querySelector("#select-dropdown-wrapper-" + self.seq).classList.remove("show")
+							for (let i of Object.keys(self.options)) {
+								self.options[i].selected = false
 							}
-							this.options[rnd].selected = true
-							document.querySelector("#" + this.id).value = this.options[rnd].value
+							self.options[rnd].selected = true
+							document.querySelector("#" + self.id).value = self.options[rnd].value
 						}
+						e.preventDefault()
 					})
 				}
 
