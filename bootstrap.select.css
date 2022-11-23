@@ -244,6 +244,8 @@
   padding: 0.25rem 0.35rem;
   width: auto;
   height: auto;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: 400;
   transform: scale(0.8) translateY(-1rem) translateX(0.65rem);
 }
 .form-outline > .form-control:-webkit-autofill ~ label {
@@ -252,6 +254,8 @@
   padding: 0.25rem 0.35rem;
   width: auto;
   height: auto;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: 400;
   transform: scale(0.8) translateY(-1rem) translateX(0.65rem);
 }
 .form-outline > .form-control-plaintext ~ label {
@@ -259,9 +263,11 @@
 }
 @media (prefers-color-scheme: dark) {
   .form-outline > .form-control-plaintext ~ label {
+    color: rgba(255, 255, 255, 0.65);
     background-color: black;
   }
   .form-outline > .form-control:-webkit-autofill ~ label {
+    color: rgba(255, 255, 255, 0.65);
     background-color: black;
   }
 }
