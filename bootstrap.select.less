@@ -261,7 +261,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		padding: .25rem;
+		padding: .25rem .75rem;
 		overflow: hidden;
 		text-align: start;
 		text-overflow: ellipsis;
@@ -269,7 +269,7 @@
 		pointer-events: none;
 		border: 1px solid transparent;
 		transform-origin: 0 0;
-		@include transition(opacity .1s ease-in-out, transform .1s ease-in-out);
+		transition: opacity .1s ease-in-out, transform .1s ease-in-out;
 	}
 
 	> .form-control,
