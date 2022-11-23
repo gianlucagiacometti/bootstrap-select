@@ -67,7 +67,7 @@
   float: right;
   position: absolute;
   right: 1rem;
-  top: 0.65rem;
+  top: 0.9rem;
   cursor: pointer;
 }
 .select-option {
@@ -190,4 +190,78 @@
 }
 .select-option-group-children {
   margin-left: 1rem;
+}
+.form-outline {
+  position: relative;
+}
+.form-outline > .form-control,
+.form-outline > .form-control-plaintext,
+.form-outline > .form-select {
+  height: 2.25rem;
+  line-height: 1.5;
+}
+.form-outline > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.25rem;
+  overflow: hidden;
+  text-align: start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transform-origin: 0 0;
+  @include transition(opacity 0.1s ease-in-out, transform 0.1s ease-in-out);
+}
+.form-outline > .form-control,
+.form-outline > .form-control-plaintext {
+  padding: 1rem 0.75rem;
+}
+.form-outline > .form-control::placeholder,
+.form-outline > .form-control-plaintext::placeholder {
+  color: transparent;
+}
+.form-outline > .form-control:focus,
+.form-outline > .form-control-plaintext:focus,
+.form-outline > .form-control:not(:placeholder-shown),
+.form-outline > .form-control-plaintext:not(:placeholder-shown) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.form-outline > .form-control:-webkit-autofill,
+.form-outline > .form-control-plaintext:-webkit-autofill {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.form-outline > .form-control:focus ~ label,
+.form-outline > .form-control:not(:placeholder-shown) ~ label,
+.form-outline > .form-control-plaintext ~ label {
+  background-color: white;
+  line-height: 1;
+  padding: 0.25rem 0.35rem;
+  width: auto;
+  height: auto;
+  transform: scale(0.8) translateY(-1rem) translateX(0.65rem);
+}
+.form-outline > .form-control:-webkit-autofill ~ label {
+  background-color: white;
+  line-height: 1;
+  padding: 0.25rem 0.35rem;
+  width: auto;
+  height: auto;
+  transform: scale(0.8) translateY(-1rem) translateX(0.65rem);
+}
+.form-outline > .form-control-plaintext ~ label {
+  border-width: 1px 0;
+}
+@media (prefers-color-scheme: dark) {
+  .form-outline > .form-control-plaintext ~ label {
+    background-color: black;
+  }
+  .form-outline > .form-control:-webkit-autofill ~ label {
+    background-color: black;
+  }
 }

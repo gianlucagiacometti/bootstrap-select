@@ -81,6 +81,10 @@ class bsSelect {
 			input.parentNode.classList.add("form-floating")
 			input.after(document.querySelector('label[for="select-input-' + this.seq + '"]'))
 		}
+		else if (this.element.classList.contains("label-outline")) {
+			input.parentNode.classList.add("form-outline")
+			input.after(document.querySelector('label[for="select-input-' + this.seq + '"]'))
+		}
 
 		if (this.element.classList.contains("form-select-lg")) {
 			input.classList.add("form-control-lg")
@@ -104,6 +108,9 @@ class bsSelect {
 
 		if (this.element.hasAttribute("placeholder")) {
 			input.setAttribute('placeholder', this.element.getAttribute("placeholder"))
+		}
+		else {
+			input.setAttribute('placeholder', "placeholder")
 		}
 
 		input.addEventListener('keydown', (event) => {
@@ -143,7 +150,7 @@ class bsSelect {
 			let search = document.createElement("div")
 			search.id = "select-search-wrapper-" + this.seq
 			search.classList.add("form-control", "select-search-wrapper")
-			search.innerHTML = '<input id="select-search-input-' + this.seq + '" class="select-search-input" value="" placeholder="' + searchText + '"><i id="select-search-icon-' + this.seq + '" class="bi bi-x-lg select-search-icon"></i>'
+			search.innerHTML = '<input id="select-search-input-' + this.seq + '" class="form-control select-search-input" value="" placeholder="' + searchText + '"><i id="select-search-icon-' + this.seq + '" class="bi bi-x-lg select-search-icon"></i>'
 			dropdown.appendChild(search)
 		}
 

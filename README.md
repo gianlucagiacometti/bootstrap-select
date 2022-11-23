@@ -16,9 +16,11 @@ This program is released under the MIT licence.
 
 ## Requirements
 
-Bootstrap >= 5.2
+Bootstrap >= 5.2.2
 
 Boostrap Icons >= 1.9 (used only by search and option images)
+
+NOTE: Version numbers will follow the version numbers of Bootstrap releases (i.e. 1.<b>5.2.2</b>.1 - Bootstrap release version in bold)
 
 
 ## Usage
@@ -56,7 +58,7 @@ You may:
 
 ## Options
 
-### Optional parameters for the Class element 
+### Optional parameters for the Class element
 
 | Property   | Type | Default   | Accepted values     | Description                                                        |
 |------------|------|-----------|---------------------|--------------------------------------------------------------------|
@@ -65,13 +67,14 @@ You may:
 
 ### Optional classes for the &lt;select&gt; element
 
-| Class                 | Description                                                                                                           |
-|-----------------------|-----------------------------------------------------------------------------------------------------------------------|
-| form-select-lg        | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with the class <b>form-control-lg</b>        |
-| form-select-sm        | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with the class <b>form-control-sm</b>        |
-| form-select-plaintext | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with the class <b>form-control-plaintext</b> |
-| label-floating        | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with a floating label.                       |
-| searchable            | Makes the &lt;select&gt; element searchable                                                                           |
+| Class                 | Description                                                                                                                           |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| form-select-lg        | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with the class <b>form-control-lg</b>                        |
+| form-select-sm        | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with the class <b>form-control-sm</b>                        |
+| form-select-plaintext | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with the class <b>form-control-plaintext</b>                 |
+| label-floating        | Styles the &lt;select&gt; element as the Bootstrap &lt;input&gt; element with a floating label (alternative to <b>label-outline</b>.  |
+| label-outline         | New style for Bootstrap &lt;input&gt; elements, which also applies to .bootstrap-select class (alternative to <b>label-floating</b>). |
+| searchable            | Makes the &lt;select&gt; element searchable                                                                                           |
 
 
 ### Optional properties for &lt;select&gt; element

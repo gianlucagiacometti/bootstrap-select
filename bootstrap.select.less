@@ -82,7 +82,7 @@
 			float: right;
 			position: absolute;
 			right: 1rem;
-			top: .65rem;
+			top: .9rem;
 			cursor: pointer;
 		}
 	}
@@ -243,4 +243,99 @@
 		}
 	}
 
+}
+
+.form-outline {
+	position: relative;
+
+	> .form-control,
+	> .form-control-plaintext,
+	> .form-select {
+		height: 2.25rem;
+		line-height: 1.5;
+	}
+
+	> label {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: .25rem;
+		overflow: hidden;
+		text-align: start;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		pointer-events: none;
+		border: 1px solid transparent;
+		transform-origin: 0 0;
+		@include transition(opacity .1s ease-in-out, transform .1s ease-in-out);
+	}
+
+	> .form-control,
+	> .form-control-plaintext {
+		padding: 1rem .75rem;
+
+		&::placeholder {
+			color: transparent;
+		}
+
+		&:focus,
+		&:not(:placeholder-shown) {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		&:-webkit-autofill {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+
+	> .form-control:focus,
+	> .form-control:not(:placeholder-shown),
+	> .form-control-plaintext {
+		~ label {
+			background-color: white;
+			line-height: 1;
+			padding: .25rem .35rem;
+			width: auto;
+			height: auto;
+			transform: scale(.8) translateY(-1rem) translateX(.65rem);
+		}
+	}
+
+	> .form-control:-webkit-autofill {
+		~ label {
+			background-color: white;
+			line-height: 1;
+			padding: .25rem .35rem;
+			width: auto;
+			height: auto;
+			transform: scale(.8) translateY(-1rem) translateX(.65rem);
+		}
+	}
+
+	> .form-control-plaintext {
+		~ label {
+			border-width: 1px 0;
+		}
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.form-outline {
+
+		> .form-control-plaintext {
+			~ label {
+				background-color: black;
+			}
+		}
+
+		> .form-control:-webkit-autofill {
+			~ label {
+				background-color: black;
+			}
+		}
+	}
 }
