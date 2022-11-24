@@ -68,7 +68,9 @@ class bsSelect {
 		let selectWrapper = document.createElement("div")
 		selectWrapper.id = "select-wrapper-" + this.seq
 		selectWrapper.classList.add("select-wrapper", "dropdown")
-		selectWrapper.innerHTML = '<div id="select-input-wrapper-' + this.seq + '" class="select-input-wrapper"><label class="form-label" for="select-input-' + this.seq + '">' + this.label.innerHTML + '</label><input id="select-input-' + this.seq + '" type="text" class="form-control select-input" value="' + text + '" readonly></div>'
+		let toggleCheckbox = this.element.multiple && this.element.dataset.bsSelectToggleButton ? '<div id="select-toggle-checkbox-"' + this.seq + '" class="form-check select-toggle-checkbox"><input type="checkbox" id="select-toggle-checkbox-' + this.seq + '" class="form-check-input"></div>' : ''
+		selectWrapper.innerHTML = '<div id="select-input-wrapper-' + this.seq + '" class="select-input-wrapper"><label class="form-label" for="select-input-' + this.seq + '">' + this.label.innerHTML + '</label><input id="select-input-' + this.seq + '" type="text" class="form-control select-input" value="' + text + '" readonly>' + toggleCheckbox + '</div>'
+
 		let children = [...this.element.parentNode.children]
 		this.element.parentNode.appendChild(selectWrapper)
 		for (let child of children) {
@@ -167,6 +169,21 @@ class bsSelect {
 			}
 			bootstrap.Dropdown.getOrCreateInstance("#select-input-wrapper-" + self.seq).toggle()
 		})
+
+		if (this.element.multiple && this.element.dataset.bsSelectToggleButton) {
+			let self = this
+			document.querySelector("#select-toggle-checkbox-" + this.seq).addEventListener('click', function(event) {
+				for (let rnd of Object.keys(self.options)) {
+					self.options[rnd].selected = event.target.checked
+					if (self.optionGroups.includes(rnd)) {
+						document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked = event.target.checked
+					}
+					else {
+						document.querySelector("#select-option-checkbox-" + self.seq + "-" + rnd).checked = event.target.checked
+					}
+				}
+			})
+		}
 
 		if (this.element.classList.contains("searchable")) {
 			document.querySelector("#select-search-input-" + this.seq).addEventListener('input', function(event) {

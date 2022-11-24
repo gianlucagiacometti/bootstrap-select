@@ -55,6 +55,11 @@
   width: 100% !important;
   padding: 0.25rem;
 }
+.select-toggle-checkbox {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.3rem;
+}
 .select-search-wrapper {
   margin-bottom: 0.25rem;
   border: none;
