@@ -1,6 +1,12 @@
 Bootstrap Select
 ================
 
+Version 1.5.2.3.4 (2022-12-14, B 5.2.3)
+=======================================
+
+- Added function to sanitise html comments in options
+
+
 Version 1.5.2.3.3 (2022-12-14, B 5.2.3)
 =======================================
 

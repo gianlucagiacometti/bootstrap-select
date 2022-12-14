@@ -309,6 +309,17 @@ class bsSelect {
 		}
 	}
 
+	#cleanComment(comment) {
+		let wrapper = document.createElement("div")
+		wrapper.innerHTML = comment
+		for (let node of wrapper.childNodes) {
+			if ((node.tagName === "SELECT") || (node.tagName === "OPTION")) {
+				node.remove()
+			}
+		}
+		return wrapper.innerHTML
+	}
+
 	#wrapOptions(children, parent = 0) {
 		let list = ""
 		let pile = 0
@@ -324,7 +335,7 @@ class bsSelect {
 			let icon = child.dataset.bsSelectOptionIcon ? '<i class="bi bi-' + child.dataset.bsSelectOptionIcon + ' me-2' + iconClass + '"></i>' : ''
 			let imageClass = child.dataset.bsSelectOptionImageClass ? ' ' + child.dataset.bsSelectOptionImageClass : ''
 			let image = child.dataset.bsSelectOptionImage ? '<span class="select-option-image-wrapper"><img class="select-option-image' + imageClass + '" src="' +  child.dataset.bsSelectOptionImage + '" alt=""></span>' : ''
-			let comment = child.dataset.bsSelectOptionComment ? '<div class="select-option-comment">' + child.dataset.bsSelectOptionComment + '</div>' : ''
+			let comment = child.dataset.bsSelectOptionComment ? '<div class="select-option-comment">' + this.#cleanComment(child.dataset.bsSelectOptionComment) + '</div>' : ''
 			if (child.tagName === "OPTION") {
 				if (!child.dataset.bsSelectOptionDivider) {
 					this.optionPiles[parent][pile].push(rnd)
