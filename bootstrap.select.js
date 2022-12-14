@@ -23,7 +23,7 @@
 
 "use strict"
 
-// constant which contains all class elements generated automatically with the aniumation selectInserted
+// constant which contains all class elements generated automatically with the animation selectInserted
 const FORM = { select: {} }
 
 class bsSelect {
@@ -326,12 +326,17 @@ class bsSelect {
 			let image = child.dataset.bsSelectOptionImage ? '<span class="select-option-image-wrapper"><img class="select-option-image' + imageClass + '" src="' +  child.dataset.bsSelectOptionImage + '" alt=""></span>' : ''
 			let comment = child.dataset.bsSelectOptionComment ? '<div class="select-option-comment">' + child.dataset.bsSelectOptionComment + '</div>' : ''
 			if (child.tagName === "OPTION") {
-				this.optionPiles[parent][pile].push(rnd)
-				if (this.multiple) {
-					item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div class="form-check"><input type="checkbox" id="select-option-checkbox-' + this.seq + '-' + rnd + '" class="form-check-input select-option-checkbox" value="' + rnd + '"' + itemDisabled + itemChecked + '><label class="form-check-label select-option-label" for="select-option-checkbox-' + this.seq + '-' + rnd + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + itemDisabled + itemSelected + '" role="option"><span class="select-option-text-wrapper">' + icon + '<span class="select-option-text">' + child.text + '</span></span>' + image + '</div></label>' + comment + '</div></div>'
+				if (!child.dataset.bsSelectOptionDivider) {
+					this.optionPiles[parent][pile].push(rnd)
+					if (this.multiple) {
+						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div class="form-check"><input type="checkbox" id="select-option-checkbox-' + this.seq + '-' + rnd + '" class="form-check-input select-option-checkbox" value="' + rnd + '"' + itemDisabled + itemChecked + '><label class="form-check-label select-option-label" for="select-option-checkbox-' + this.seq + '-' + rnd + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + itemDisabled + itemSelected + '" role="option"><span class="select-option-text-wrapper">' + icon + '<span class="select-option-text">' + child.text + '</span></span>' + image + '</div></label>' + comment + '</div></div>'
+					}
+					else {
+						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + '" role="option"><span class="select-option-text-wrapper">' + icon + '<span class="select-option-text">' + child.text + '</span></span>' + image + '</div>' + comment + '</div>'
+					}
 				}
 				else {
-					item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + '" role="option"><span class="select-option-text-wrapper">' + icon + '<span class="select-option-text">' + child.text + '</span></span>' + image + '</div>' + comment + '</div>'
+					item = '<hr>'
 				}
 			}
 			else if (child.tagName === "OPTGROUP") {
@@ -348,9 +353,11 @@ class bsSelect {
 					item = '<div id="select-option-group-wrapper-' + this.seq + '-' + rnd + '" class="select-option-group-wrapper"><div id="select-option-group-' + this.seq + '-' + rnd + '" class="select-option-group select-option-group-' + this.seq + '" role="optgroup"><span class="select-option-group-text-wrapper">' + icon + '<span class="select-option-group-text">' + child.label + '</span></span>' + image + '</div>' + comment + '<div id="select-option-group-children-' + this.seq + '-' + rnd + '" class="select-option-group-children">' + this.#wrapOptions(child.children, rnd) + '</div></div>'
 				}
 			}
-			child.dataset.rnd = rnd
-			this.options[rnd] = child
-			this.optionParents[rnd] = parent
+			if (!child.dataset.bsSelectOptionDivider) {
+				child.dataset.rnd = rnd
+				this.options[rnd] = child
+				this.optionParents[rnd] = parent
+			}
 			list += item
 		}
 		return list

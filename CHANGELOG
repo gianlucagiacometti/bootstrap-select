@@ -1,6 +1,13 @@
 Bootstrap Select
 ================
 
+Version 1.5.2.3.3 (2022-12-14, B 5.2.3)
+=======================================
+
+- Added form-outline style for input and textarea
+- Fix typo in comment
+
+
 Version 1.5.2.3.2 (2022-11-23, B 5.2.3)
 =======================================
 

@@ -199,8 +199,8 @@
 .form-outline {
   position: relative;
 }
-.form-outline > .form-control,
-.form-outline > .form-control-plaintext,
+.form-outline > input.form-control,
+.form-outline > input.form-control-plaintext,
 .form-outline > .form-select {
   height: 2.25rem;
   line-height: 1.5;
