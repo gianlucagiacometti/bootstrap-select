@@ -4,6 +4,8 @@ Before creating an issue, check if you are using the latest version of the proje
 
 ## :repeat: Pull Requests
 
-a) Try to keep your code clear and simple, and avoid redundancies
-b) Write proper comments for any groups of instructions
-c) Update the changelog file accordingly
+- Try to keep your code clear and simple, and avoid redundancies
+
+- Write proper comments for any groups of instructions
+
+- Update the changelog file accordingly
