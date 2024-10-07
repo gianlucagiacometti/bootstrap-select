@@ -168,6 +168,10 @@ class bsSelect {
 				wrappers[i].classList.remove("show")
 			}
 			bootstrap.Dropdown.getOrCreateInstance("#select-input-wrapper-" + self.seq).toggle()
+			let inputField = document.querySelector('#select-search-input-'+ self.seq);
+			if (inputField) {
+				inputField.focus();
+			}
 		})
 
 		if (this.element.multiple && this.element.dataset.bsSelectToggleButton) {
