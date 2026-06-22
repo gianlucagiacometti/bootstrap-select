@@ -68,7 +68,7 @@ class bsSelect {
 		let selectWrapper = document.createElement("div")
 		selectWrapper.id = "select-wrapper-" + this.seq
 		selectWrapper.classList.add("select-wrapper", "dropdown")
-		let toggleCheckbox = this.element.multiple && this.element.dataset.bsSelectToggleButton ? '<div id="select-toggle-checkbox-"' + this.seq + '" class="form-check select-toggle-checkbox"><input type="checkbox" id="select-toggle-checkbox-' + this.seq + '" class="form-check-input"></div>' : ''
+		let toggleCheckbox = this.element.multiple && this.element.dataset.bsSelectToggleButton ? '<div id="select-toggle-wrapper-' + this.seq + '" class="form-check select-toggle-checkbox"><input type="checkbox" id="select-toggle-checkbox-' + this.seq + '" class="form-check-input"></div>' : ''
 		selectWrapper.innerHTML = '<div id="select-input-wrapper-' + this.seq + '" class="select-input-wrapper"><label class="form-label" for="select-input-' + this.seq + '">' + this.label.innerHTML + '</label><input id="select-input-' + this.seq + '" type="text" class="form-control select-input" value="' + text + '" readonly>' + toggleCheckbox + '</div>'
 
 		let children = [...this.element.parentNode.children]
@@ -142,7 +142,7 @@ class bsSelect {
 		let list = document.createElement("div")
 		list.id = "select-option-list-" + this.seq
 		list.classList.add("select-option-list")
-		list.setAttribute('aria-role', "listbox")
+		list.setAttribute('role', "listbox")
 		list.innerHTML = this.#wrapOptions(this.element.children)
 
 		options.appendChild(list)
@@ -287,7 +287,7 @@ class bsSelect {
 
 	#setDescendantsAlike(element) {
 		let checked = document.querySelector("#select-option-group-checkbox-" + this.seq + "-" + element.dataset.rnd).checked
-		let children = element.querySelectorAll("option", "optgroup")
+		let children = element.querySelectorAll("option, optgroup")
 		for (let child of children) {
 			let rnd = child.dataset.rnd
 			if (child.tagName == "OPTGROUP") {
@@ -604,7 +604,7 @@ class bsSelect {
 
 			}
 			else {
-				unsorted[pile].keys().sort((a, b) => shift * this.#compareSelectChildren(self.options[a], self.options[b])).forEach(function(rnd) {
+				unsorted[pile].slice().sort((a, b) => shift * this.#compareSelectChildren(self.options[a], self.options[b])).forEach(function(rnd) {
 					sorted.push(rnd)
 					if (parent == 0) {
 						self.element.appendChild(self.options[rnd])
@@ -778,7 +778,7 @@ class bsSelect {
 
 				if (parents[index]) {
 					if ((typeof parents[index] === "string") && document.querySelector("#" + parents[index])) {
-						for (let [rnd, obj] of this.options) {
+						for (let [rnd, obj] of Object.entries(this.options)) {
 							if (obj.isEqualNode(document.querySelector("#" + parents[index])) && (option.tagName === "OPTGROUP")) {
 								parent = rnd
 								list = document.querySelector("#select-option-group-children-" + this.seq + "-" + rnd)
@@ -786,7 +786,7 @@ class bsSelect {
 							}
 						}
 					}
-					else if ((typeof parents[index] === "number") && Object.keys(this.options).includes(parents[index]) && this.optionGroups.includes(parents['index'])) {
+					else if ((typeof parents[index] === "number") && Object.keys(this.options).includes(parents[index]) && this.optionGroups.includes(parents[index])) {
 						parent = parents[index]
 						list = document.querySelector("#select-option-group-children-" + this.seq + "-" + parents[index])
 					}
@@ -838,7 +838,7 @@ class bsSelect {
 					this.element.appendChild(option)
 				}
 				else {
-					for (let rnd of this.optionParents) {
+					for (let rnd of Object.entries(this.optionParents)) {
 						if (rnd == parent) {
 							document.querySelector('optgroup[data-rnd="' + rnd + '"]').appendChild(option)
 							break
@@ -911,7 +911,7 @@ class bsSelect {
 	value(values, options = { swap: true, disabled: false }) {
 		if (values === undefined) {
 			if (this.element.multiple) {
-				return [...this.element.selectedOptions].map(item => item.text)
+				return [...this.element.selectedOptions].map(item => item.value)
 			}
 			else {
 				return this.element.value
