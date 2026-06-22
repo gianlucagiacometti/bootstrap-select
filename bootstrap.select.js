@@ -925,6 +925,14 @@ class bsSelect {
 				}
 
 				let rnd = "" + Date.now() + Math.floor(Math.random()*1000)
+
+				if (this.multiple && this.element.dataset.bsSelectToggleButton) {
+					let toggle = document.querySelector("#select-toggle-checkbox-" + this.seq)
+					if (toggle && toggle.checked && !option.disabled) {
+						option.selected = true
+					}
+				}
+
 				let item = ""
 				let itemDisabled = option.disabled ? ' disabled' : ''
 				let itemSelected = option.selected ? ' selected' : ''
