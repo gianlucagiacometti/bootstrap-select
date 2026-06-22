@@ -773,6 +773,10 @@ class bsSelect {
 
 	sort(parameters = {}) {
 
+		if (document.querySelector("#select-option-list-" + this.seq + " hr")) {
+			return
+		}
+
 		if (typeof parameters === "string") {
 			parameters = { mode: parameters }
 		}
