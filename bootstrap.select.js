@@ -391,6 +391,9 @@ class bsSelect {
 			let selected = true
 			let selectable = false
 			for (let child of this.options[rnd].children) {
+				if (child.dataset.bsSelectOptionDivider || !child.dataset.rnd) {
+					continue
+				}
 				if (child.disabled) {
 					continue
 				}
