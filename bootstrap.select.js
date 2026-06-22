@@ -830,6 +830,9 @@ class bsSelect {
 	} // sort
 
 	remove(obj) {
+		if (typeof obj === "string") {
+        	obj = { id: obj }
+    	}
 		let removed = false
 		if (!!(obj && Object.getPrototypeOf(obj) === Object.prototype)) {
 
