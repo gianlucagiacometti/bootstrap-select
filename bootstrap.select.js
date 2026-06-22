@@ -810,22 +810,17 @@ class bsSelect {
 			parameters['optionGroups'] = "include"
 		}
 
-		// do nothing if already sorted
-//		if (this.#sortedChanged(parameters, this.sorted)) {
+		let sorted = this.#sortWrapper(parameters)
 
-			let sorted = this.#sortWrapper(parameters)
+		// re-arrange the array of options
+		let newOptions = {}
+		for (let rnd of sorted) {
+			newOptions[rnd] = this.options[rnd]
+		}
+		this.options = newOptions
 
-			// re-arrange the array of options
-			let newOptions = {}
-			for (let rnd of sorted) {
-				newOptions[rnd] = this.options[rnd]
-			}
-			this.options = newOptions
-
-			// update the sorting parameters
-			this.sorted = parameters
-
-//		}
+		// update the sorting parameters
+		this.sorted = parameters
 
 	} // sort
 
