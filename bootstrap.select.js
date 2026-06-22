@@ -781,7 +781,7 @@ class bsSelect {
 						let parentElement = document.querySelector("#" + parents[index])
 						if (parentElement.tagName === "OPTGROUP") {
 							for (let [rnd, obj] of Object.entries(this.options)) {
-								if (obj.isEqualNode(parentElement)) {
+								if (obj === parentElement) {
 									parent = rnd
 									list = document.querySelector("#select-option-group-children-" + this.seq + "-" + rnd)
 									break
