@@ -707,7 +707,7 @@ class bsSelect {
 	} // sort
 
 	remove(obj) {
-
+		let removed = false
 		if (!!(obj && Object.getPrototypeOf(obj) === Object.prototype)) {
 
 			if ("value" in obj) {
@@ -725,6 +725,7 @@ class bsSelect {
 							document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).remove()
 							this.options[rnd].remove()
 							delete this.options[rnd]
+							removed = true
 						}
 					}
 				}
@@ -744,6 +745,7 @@ class bsSelect {
 							document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).remove()
 							this.options[rnd].remove()
 							delete this.options[rnd]
+							removed = true
 						}
 					}
 				}
@@ -754,6 +756,7 @@ class bsSelect {
 						document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).remove()
 						this.options[rnd].remove()
 						delete this.options[rnd]
+						removed = true
 					}
 				}
 			}
@@ -762,8 +765,10 @@ class bsSelect {
 			console.warn("Warning: Argument of bsSelect.remove() must be a valid hash like { value: 'value', values: ['value1', 'value2'], id: 'id', ids: ['id1', 'id2'], index: 'valid select-option index' }")
 		}
 
-		document.querySelector("#select-input-" + this.seq).value = [...this.element.selectedOptions].map(item => item.text).join()
-		this.#dispatchChange()
+		if (removed) {
+			document.querySelector("#select-input-" + this.seq).value = [...this.element.selectedOptions].map(item => item.text).join()
+			this.#dispatchChange()
+		}
 
 	} // remove
 
