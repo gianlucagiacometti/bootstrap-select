@@ -930,6 +930,13 @@ class bsSelect {
 					let toggle = document.querySelector("#select-toggle-checkbox-" + this.seq)
 					if (toggle && toggle.checked && !option.disabled) {
 						option.selected = true
+						if (option.tagName === "OPTGROUP") {
+							for (let child of option.querySelectorAll("option, optgroup")) {
+								if (!child.disabled) {
+									child.selected = true
+								}
+							}
+						}
 					}
 				}
 
@@ -1062,6 +1069,10 @@ class bsSelect {
 						self.#dispatchChange()
 						e.preventDefault()
 					})
+				}
+
+				if (option.tagName === "OPTGROUP" && option.children.length) {
+					this.insert([...option.children], rnd)
 				}
 
 			}
