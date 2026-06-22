@@ -203,7 +203,9 @@ class bsSelect {
 					}
 				}
 				document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
+				self.#syncToggleCheckbox()
 				self.#dispatchChange()
+				
 			})
 		}
 
@@ -278,6 +280,7 @@ class bsSelect {
 							}
 						}
 						document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
+						self.#syncToggleCheckbox()
 						self.#dispatchChange()
 					}
 					else {
@@ -288,6 +291,7 @@ class bsSelect {
 						}
 						self.options[rnd].selected = true
 						document.querySelector("#" + self.id).value = self.options[rnd].value
+						self.#syncToggleCheckbox()
 						self.#dispatchChange()
 					}
 					e.preventDefault()
@@ -298,6 +302,7 @@ class bsSelect {
 					document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked = !document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked
 					self.#setDescendantsAlike(self.options[rnd])
 					document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
+					self.#syncToggleCheckbox()
 					self.#dispatchChange()
 					e.preventDefault()
 				})
@@ -349,6 +354,22 @@ class bsSelect {
 		this.element.dispatchEvent(new Event("change", { bubbles: true }))
 	}
 
+	#syncToggleCheckbox() {
+		if (!this.element.multiple || !this.element.dataset.bsSelectToggleButton) {
+			return
+		}
+		let toggle = document.querySelector("#select-toggle-checkbox-" + this.seq)
+		if (!toggle) {
+			return
+		}
+		let selectableOptions = Object.keys(this.options).filter(rnd => {
+			return !this.optionGroups.includes(rnd) && !this.options[rnd].disabled
+		})
+		toggle.checked = selectableOptions.length > 0 && selectableOptions.every(rnd => {
+			return this.options[rnd].selected
+		})
+	}
+
 	#removeFromOptionPiles(rnd) {
 		for (let parent of Object.keys(this.optionPiles)) {
 			for (let pile of Object.keys(this.optionPiles[parent])) {
@@ -379,7 +400,7 @@ class bsSelect {
 		delete this.options[rnd]
 		delete this.optionParents[rnd]
 	}
-
+	
 	#wrapOptions(children, parent = 0) {
 		let list = ""
 		let pile = 0
