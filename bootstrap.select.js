@@ -775,18 +775,7 @@ class bsSelect {
 
 				let list
 				let parent
-console.log('insert parent argument', parents[index])
-console.log(
-	'available optgroups',
-	[...this.element.querySelectorAll('optgroup')].map(group => {
-		return {
-			id: group.id,
-			label: group.label,
-			rnd: group.dataset.rnd
-		}
-	})
-)
-				
+
 				if (parents[index]) {
 					if (typeof parents[index] === "string") {
 						let parentElement = this.element.querySelector('optgroup[id="' + parents[index] + '"]')
@@ -798,20 +787,12 @@ console.log(
 							list = document.querySelector("#select-option-group-children-" + this.seq + "-" + parent)
 						}
 					}
-					else if ((typeof parents[index] === "number") && Object.keys(this.options).includes(parents[index]) && this.optionGroups.includes(parents[index])) {
-						parent = parents[index]
-						list = document.querySelector("#select-option-group-children-" + this.seq + "-" + parents[index])
-					}
-					else {
-						parent = 0
-						list = document.querySelector("#select-option-list-" + this.seq)
+					else if ((typeof parents[index] === "number") && Object.keys(this.options).includes(String(parents[index])) && this.optionGroups.includes(String(parents[index]))) {
+						parent = String(parents[index])
+						list = document.querySelector("#select-option-group-children-" + this.seq + "-" + parent)
 					}
 				}
-				else {
-					parent = 0
-					list = document.querySelector("#select-option-list-" + this.seq)
-				}
-console.log('resolved insert parent', parent, list)
+
 				if (!parent || !list) {
 					parent = 0
 					list = document.querySelector("#select-option-list-" + this.seq)
