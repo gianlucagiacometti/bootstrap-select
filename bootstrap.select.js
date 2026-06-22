@@ -344,17 +344,24 @@ class bsSelect {
 	#dispatchChange() {
 		this.element.dispatchEvent(new Event("change", { bubbles: true }))
 	}
-
+	
 	#removeOptionElement(rnd) {
 		if (this.optionGroups.includes(rnd)) {
+			for (let child of this.options[rnd].querySelectorAll("option, optgroup")) {
+				if (child.dataset.rnd && Object.keys(this.options).includes(child.dataset.rnd)) {
+					delete this.options[child.dataset.rnd]
+					delete this.optionParents[child.dataset.rnd]
+				}
+			}
 			document.querySelector("#select-option-group-wrapper-" + this.seq + "-" + rnd).remove()
+			this.optionGroups = this.optionGroups.filter(item => item != rnd)
 		}
 		else {
 			document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).remove()
 		}
-	
 		this.options[rnd].remove()
 		delete this.options[rnd]
+		delete this.optionParents[rnd]
 	}
 
 	#wrapOptions(children, parent = 0) {
