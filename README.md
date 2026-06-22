@@ -21,7 +21,7 @@ Bootstrap >= 5.3
 
 Bootstrap Icons ^1 (used only by search and option images)
 
-NOTE: Version numbers will follow the version numbers of Bootstrap releases (i.e. 1.<b>5.3.x</b>)
+NOTE: Version numbers will follow the version numbers of Bootstrap releases (i.e. 1.<b>5.3.x</b> - Bootstrap release version in bold)
 
 
 ## Usage
