@@ -881,7 +881,7 @@ class bsSelect {
 
 	} // remove
 
-	insert(options, parents) {
+	insert(options, parents, sortAfter = true) {
 
 		if (typeof options === "string") {
 			let template = document.createElement("template")
@@ -1085,7 +1085,7 @@ class bsSelect {
 
 				if (option.tagName === "OPTGROUP" && option.children.length) {
 					let children = [...option.children]
-					this.insert(children, children.map(() => rnd))
+					this.insert(children, children.map(() => rnd), false)
 				}
 
 			}
@@ -1098,7 +1098,9 @@ class bsSelect {
 		this.#syncOptionGroups()
 		this.#syncToggleCheckbox()
 
-		this.sort(this.sorted)
+		if (sortAfter) {
+			this.sort(this.sorted)
+		}
 
 	} // insert
 
