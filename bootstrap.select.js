@@ -938,6 +938,12 @@ class bsSelect {
 
 				let rnd = "" + Date.now() + Math.floor(Math.random()*1000)
 
+				if (option.tagName === "OPTGROUP" && option.disabled) {
+					for (let child of option.querySelectorAll("option, optgroup")) {
+						child.disabled = true
+					}
+				}
+
 				if (this.multiple && this.element.dataset.bsSelectToggleButton) {
 					let toggle = document.querySelector("#select-toggle-checkbox-" + this.seq)
 					if (toggle && toggle.checked && !option.disabled) {
@@ -963,7 +969,10 @@ class bsSelect {
 				let comment = option.dataset.bsSelectOptionComment ? '<div class="select-option-comment">' + option.dataset.bsSelectOptionComment + '</div>' : ''
 
 				if (option.tagName === "OPTION") {
-					if (this.multiple) {
+					if (option.dataset.bsSelectOptionDivider) {
+						item = '<hr>'
+					}
+					else if (this.multiple) {
 						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div class="form-check"><input type="checkbox" id="select-option-checkbox-' + this.seq + '-' + rnd + '" class="form-check-input select-option-checkbox" value="' + rnd + '"' + itemDisabled + itemChecked + '><label class="form-check-label select-option-label" for="select-option-checkbox-' + this.seq + '-' + rnd + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + itemDisabled + itemSelected + '" role="option"><span class="select-option-text-wrapper">' + icon + '<span class="select-option-text">' + option.text + '</span></span>' + image + '</div></label>' + comment + '</div></div>'
 					}
 					else {
@@ -983,23 +992,29 @@ class bsSelect {
 				template.innerHTML = item
 				list.appendChild(template.content.firstChild)
 
-				option.dataset.rnd = rnd
-
-				if (parent == 0) {
-					this.element.appendChild(option)
+				if (!option.dataset.bsSelectOptionDivider) {
+					option.dataset.rnd = rnd
+	
+					if (parent == 0) {
+						this.element.appendChild(option)
+					}
+					else {
+						document.querySelector('optgroup[data-rnd="' + parent + '"]').appendChild(option)
+					}
+	
+					this.options[rnd] = option
+					this.optionParents[rnd] = parent
+					this.optionPiles[parent][0].push(rnd)
+	
+					if (option.tagName === "OPTGROUP") {
+						this.optionGroups.push(rnd)
+						this.optionPiles[rnd] = {}
+						this.optionPiles[rnd][0] = []
+					}
 				}
-				else {
-					document.querySelector('optgroup[data-rnd="' + parent + '"]').appendChild(option)
-				}
 
-				this.options[rnd] = option
-				this.optionParents[rnd] = parent
-				this.optionPiles[parent][0].push(rnd)
-
-				if (option.tagName === "OPTGROUP") {
-					this.optionGroups.push(rnd)
-					this.optionPiles[rnd] = {}
-					this.optionPiles[rnd][0] = []
+				if (option.dataset.bsSelectOptionDivider) {
+					continue
 				}
 
 				if (!this.multiple && option.selected) {
