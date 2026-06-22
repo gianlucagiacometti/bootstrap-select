@@ -778,11 +778,14 @@ class bsSelect {
 
 				if (parents[index]) {
 					if ((typeof parents[index] === "string") && document.querySelector("#" + parents[index])) {
-						for (let [rnd, obj] of Object.entries(this.options)) {
-							if (obj.isEqualNode(document.querySelector("#" + parents[index])) && (option.tagName === "OPTGROUP")) {
-								parent = rnd
-								list = document.querySelector("#select-option-group-children-" + this.seq + "-" + rnd)
-								break
+						let parentElement = document.querySelector("#" + parents[index])
+						if (parentElement.tagName === "OPTGROUP") {
+							for (let [rnd, obj] of Object.entries(this.options)) {
+								if (obj.isEqualNode(parentElement)) {
+									parent = rnd
+									list = document.querySelector("#select-option-group-children-" + this.seq + "-" + rnd)
+									break
+								}
 							}
 						}
 					}
@@ -796,6 +799,11 @@ class bsSelect {
 					}
 				}
 				else {
+					parent = 0
+					list = document.querySelector("#select-option-list-" + this.seq)
+				}
+
+				if (!parent || !list) {
 					parent = 0
 					list = document.querySelector("#select-option-list-" + this.seq)
 				}
