@@ -321,8 +321,14 @@ class bsSelect {
 	#setDescendantsAlike(element) {
 		let checked = document.querySelector("#select-option-group-checkbox-" + this.seq + "-" + element.dataset.rnd).checked
 		let children = element.querySelectorAll("option, optgroup")
+
 		for (let child of children) {
+			if (child.dataset.bsSelectOptionDivider || !child.dataset.rnd) {
+				continue
+			}
+
 			let rnd = child.dataset.rnd
+
 			if (child.tagName == "OPTGROUP") {
 				document.querySelector("#select-option-group-checkbox-" + this.seq + "-" + rnd).checked = checked
 				if (checked) {
