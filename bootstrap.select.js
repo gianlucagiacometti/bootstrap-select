@@ -838,12 +838,7 @@ class bsSelect {
 					this.element.appendChild(option)
 				}
 				else {
-					for (let rnd of Object.entries(this.optionParents)) {
-						if (rnd == parent) {
-							document.querySelector('optgroup[data-rnd="' + rnd + '"]').appendChild(option)
-							break
-						}
-					}
+					document.querySelector('optgroup[data-rnd="' + parent + '"]').appendChild(option)
 				}
 
 				this.options[rnd] = option
