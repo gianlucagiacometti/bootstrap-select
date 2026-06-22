@@ -1072,7 +1072,8 @@ class bsSelect {
 				}
 
 				if (option.tagName === "OPTGROUP" && option.children.length) {
-					this.insert([...option.children], rnd)
+					let children = [...option.children]
+					this.insert(children, children.map(() => rnd))
 				}
 
 			}
