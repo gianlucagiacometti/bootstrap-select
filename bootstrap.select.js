@@ -571,7 +571,22 @@ class bsSelect {
 		let inactiveGroupIndexes = []
 		let list = parent == 0 ? document.querySelector("#select-option-list-" + this.seq) : document.querySelector("#select-option-group-children-" + this.seq + "-" + parent)
 
+		if (list && list.querySelector("hr")) {
+			let unchanged = []
+
+			for (let pile of Object.keys(this.optionPiles[parent])) {
+				for (let rnd of this.optionPiles[parent][pile]) {
+					if (this.options[rnd] && this.optionParents[rnd] == parent) {
+						unchanged.push(rnd)
+					}
+				}
+			}
+
+			return unchanged
+		}
+
 		let shift
+
 		if (parameters['mode'] == "asc") {
 			shift = 1
 		}
