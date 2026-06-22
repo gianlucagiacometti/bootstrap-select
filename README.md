@@ -91,7 +91,7 @@ You may:
 | Attribute             | Type    | Description                                                                                                                                    |
 |-----------------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | data-bs-search-text   | text    | The <b>placeholder</b> text in the search input field. If this attribute is not used, the default <b>placeholder</b> text will be: "Search..." |
-| data-bs-toggle-button | boolean | A toggle all checkbox shows if this attribute exists and is set to "true".                                                                    |
+| data-bs-toggle-button | boolean | A toggle all checkbox shows if this attribute exists and is set to "true".                                                                     |
 
 
 ### Optional properties for the &lt;option&gt; element
@@ -107,9 +107,9 @@ You may:
 | Attribute                         | Type         | Description                                                                                                                                                                                                       |
 |-----------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | data-bs-select-option-icon        | text         | The name of the Bootstrap icon which will be prepended to the text of the &lt;option&gt; element (without "bi-").                                                                                                 |
-| data-bs-select-option-icon-class  | text         | The name of the class which will be added to the &lt;i&gt; element of the icon.                                                                                                                                   |
+| data-bs-select-option-icon-class  | text         | The class or classes added to the option icon `<i>` element. If `data-bs-select-option-icon` is not set, the class is used directly, allowing custom icon libraries such as flag-icons.                           |
 | data-bs-select-option-image       | text         | The "src" attribute of the image which will be inserted at the very right of the text of the &lt;option&gt; element.                                                                                              |
-| data-bs-select-option-image-class | text         | The name of the class which will be added to the &lt;img&gt; element of the &lt;option&gt; image.                                                                                                                   |
+| data-bs-select-option-image-class | text         | The name of the class which will be added to the &lt;img&gt; element of the &lt;option&gt; image.                                                                                                                 |
 | data-bs-select-option-comment     | text or html | The content of the comment which will be inserted below the text of the &lt;option&gt; element. The comment has a default style. All additional styles must be specified in the html as classes or inline styles. |
 | data-bs-select-option-divider     | text         | If exists and set to "true", transforms the &lt;option&gt; element into a &lt;hr&gt; divider element. Dividers are supported inside optgroups. Root-level dividers are not guaranteed to preserve semantic position after sorting. |
 
