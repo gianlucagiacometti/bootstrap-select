@@ -304,6 +304,7 @@ class bsSelect {
 					document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked = !document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked
 					self.#setDescendantsAlike(self.options[rnd])
 					document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
+					self.#syncOptionGroups()
 					self.#syncToggleCheckbox()
 					self.#dispatchChange()
 					e.preventDefault()
@@ -974,9 +975,15 @@ class bsSelect {
 						}
 					}
 					document.querySelector("#select-input-" + this.seq).value = option.text
+					this.#syncOptionGroups()
+					this.#syncToggleCheckbox()
+					this.#dispatchChange()
 				}
 				else if (this.multiple && option.selected) {
 					document.querySelector("#select-input-" + this.seq).value = [...this.element.selectedOptions].map(item => item.text).join()
+					this.#syncOptionGroups()
+					this.#syncToggleCheckbox()
+					this.#dispatchChange()
 				}
 
 				if (!option.disabled) {
@@ -1022,6 +1029,9 @@ class bsSelect {
 							self.options[rnd].selected = true
 							document.querySelector("#" + self.id).value = self.options[rnd].value
 						}
+						self.#syncOptionGroups()
+						self.#syncToggleCheckbox()
+						self.#dispatchChange()
 						e.preventDefault()
 					})
 				}
