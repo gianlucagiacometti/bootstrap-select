@@ -280,6 +280,7 @@ class bsSelect {
 					document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked = !document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked
 					self.#setDescendantsAlike(self.options[rnd])
 					document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
+					self.#dispatchChange()
 					e.preventDefault()
 				})
 			}
