@@ -163,6 +163,10 @@ class bsSelect {
 		let self = this
 
 		document.querySelector("#select-input-" + this.seq).addEventListener('click', function(event) {
+			if (self.element.dataset.bsSelectReadonly == "true") {
+				event.preventDefault()
+				return
+			}
 			let wrappers = document.querySelectorAll(".select-dropdown-wrapper:not(#select-dropdown-wrapper-" + self.seq + ")")
 			for (let i = 0; i < wrappers.length; ++i) {
 				wrappers[i].classList.remove("show")
@@ -1055,19 +1059,16 @@ class bsSelect {
 		if (!status || (typeof status != "boolean")) {
 			status = false
 		}
-		this.element.disabled = status
 		let input = document.querySelector("#select-input-" + this.seq)
-		var newInput = input.cloneNode()
-		input.parentNode.replaceChild(newInput, input);
-		if (!status) {
-			let self = this
-			document.querySelector("#select-input-" + this.seq).addEventListener('click', function(event) {
-				let wrappers = document.querySelectorAll(".select-dropdown-wrapper:not(#select-dropdown-wrapper-" + self.seq + ")")
-				for (let i = 0; i < wrappers.length; ++i) {
-					wrappers[i].classList.remove("show")
-				}
-				bootstrap.Dropdown.getOrCreateInstance("#select-input-wrapper-" + self.seq).toggle()
-			})
+		if (status) {
+			this.element.dataset.bsSelectReadonly = "true"
+			input.classList.add("readonly")
+			input.setAttribute("aria-readonly", "true")
+		}
+		else {
+			delete this.element.dataset.bsSelectReadonly
+			input.classList.remove("readonly")
+			input.removeAttribute("aria-readonly")
 		}
 	}
 
