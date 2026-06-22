@@ -203,6 +203,7 @@ class bsSelect {
 					}
 				}
 				document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
+				self.#syncOptionGroups()
 				self.#syncToggleCheckbox()
 				self.#dispatchChange()
 				
@@ -280,6 +281,7 @@ class bsSelect {
 							}
 						}
 						document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
+						self.#syncOptionGroups()
 						self.#syncToggleCheckbox()
 						self.#dispatchChange()
 					}
@@ -308,6 +310,9 @@ class bsSelect {
 				})
 			}
 		}
+
+		this.#syncOptionGroups()
+		this.#syncToggleCheckbox()
 
 	} // constructor
 
