@@ -775,7 +775,7 @@ class bsSelect {
 
 				let list
 				let parent
-
+console.log('insert parent argument', parents[index])
 				if (parents[index]) {
 					if ((typeof parents[index] === "string") && document.querySelector("#" + parents[index])) {
 						let parentElement = document.querySelector("#" + parents[index])
@@ -797,7 +797,7 @@ class bsSelect {
 					parent = 0
 					list = document.querySelector("#select-option-list-" + this.seq)
 				}
-
+console.log('resolved insert parent', parent, list)
 				if (!parent || !list) {
 					parent = 0
 					list = document.querySelector("#select-option-list-" + this.seq)
