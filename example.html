@@ -71,9 +71,10 @@
 			<div>
 				<button type="button" id="setvalue-s" class="btn btn-sm btn-primary m-2">Set value</button>
 				<button type="button" id="getvalue-s" class="btn btn-sm btn-outline-primary m-2">Get value</button>
-				<button type="button" id="insert-s" class="btn btn-sm btn-secondary m-2">Insert</button>
-				<button type="button" id="insert2-s" class="btn btn-sm btn-warning m-2">Insert2</button>
-				<button type="button" id="delete-s" data-value="2" class="btn btn-sm btn-danger m-2">Delete</button>
+				<button type="button" id="insert-s" class="btn btn-sm btn-secondary m-2">Insert option</button>
+				<button type="button" id="insert2-s" class="btn btn-sm btn-warning m-2">Insert DOM option</button>
+				<button type="button" id="insert-group-s" class="btn btn-sm btn-outline-secondary m-2">Insert optgroup</button>
+				<button type="button" id="delete-s" data-value="2" class="btn btn-sm btn-danger m-2">Delete value 2</button>
 			</div>
 
 			<hr>
@@ -123,10 +124,15 @@
 			</div>
 
 			<div>
-				<button type="button" id="insert-m" class="btn btn-sm btn-mecondary m-2">Insert</button>
-				<button type="button" id="insert2-m" class="btn btn-sm btn-warning m-2">Insert2</button>
-				<button type="button" id="delete-m" data-value="2" class="btn btn-sm btn-danger m-2">Delete</button>
-				<button type="button" id="destroy-m" class="btn btn-sm btn-outline-danger m-2">Destroy</button>
+				<button type="button" id="insert-m" class="btn btn-sm btn-secondary m-2">Insert option</button>
+				<button type="button" id="insert-group-m" class="btn btn-sm btn-outline-secondary m-2">Insert optgroup</button>
+				<button type="button" id="insert-disabled-group-m" class="btn btn-sm btn-outline-warning m-2">Insert disabled optgroup</button>
+				<button type="button" id="insert-divider-group-m" class="btn btn-sm btn-outline-info m-2">Insert divider optgroup</button>
+				<button type="button" id="remove-group-m" class="btn btn-sm btn-outline-danger m-2">Remove optgroup</button>
+				<button type="button" id="insert-shorthand-group-m" class="btn btn-sm btn-outline-secondary m-2">Insert shorthand test group</button>
+				<button type="button" id="remove-group-shorthand-m" class="btn btn-sm btn-outline-danger m-2">Remove by shorthand</button>
+				<button type="button" id="delete-m" data-value="2" class="btn btn-sm btn-danger m-2">Delete value 2</button>
+ 				<button type="button" id="destroy-m" class="btn btn-sm btn-outline-danger m-2">Destroy</button>
 			</div>
 
 		</form>
@@ -230,6 +236,9 @@
 						el.text = 'Judy'
 						FORM.select['my-select'].insert(el)
 					}
+					else if (id == 'insert-group-s') {
+						FORM.select['my-select'].insert('<optgroup id="example-single-group" label="Example single group"><option value="903">Single 903</option><option value="904">Single 904</option></optgroup>')
+					}
 					else if (id == 'delete-s') {
 						FORM.select['my-select'].remove({ value: event.target.dataset.value })
 					}
@@ -267,14 +276,29 @@
 						FORM.select['my-multiple-select'].sort({ mode: 'desc', disabled: 'include' })
 					}
 					else if (id == 'insert-m') {
-						FORM.select['my-multiple-select'].sort()
+						FORM.select['my-multiple-select'].insert('<option value="1201">Inserted 1201</option>')
 					}
-					else if (id == 'insert2-m') {
-						FORM.select['my-multiple-select'].sort()
+					else if (id == 'insert-group-m') {
+						FORM.select['my-multiple-select'].insert('<optgroup id="example-group" label="Example group"><option value="1301">Example 1301</option><option value="1302">Example 1302</option></optgroup>')
 					}
-					else if (id == 'delete-m') {
-						FORM.select['my-multiple-select'].remove({ value: event.target.dataset.value })
+					else if (id == 'insert-disabled-group-m') {
+						FORM.select['my-multiple-select'].insert('<optgroup id="example-disabled-group" label="Example disabled group" disabled><option value="1401">Disabled 1401</option><option value="1402">Disabled 1402</option></optgroup>')
 					}
+					else if (id == 'insert-divider-group-m') {
+						FORM.select['my-multiple-select'].insert('<optgroup id="example-divider-group" label="Example divider group"><option value="1501">Before divider</option><option data-bs-select-option-divider="true"></option><option value="1502">After divider</option></optgroup>')
+					}
+					else if (id == 'remove-group-m') {
+						FORM.select['my-multiple-select'].remove({ id: 'example-group' })
+					}
+					else if (id == 'insert-shorthand-group-m') {
+						FORM.select['my-multiple-select'].insert('<optgroup id="example-shorthand-group" label="Example shorthand group"><option value="1601">Shorthand 1601</option><option value="1602">Shorthand 1602</option></optgroup>')
+					}
+					else if (id == 'remove-group-shorthand-m') {
+						FORM.select['my-multiple-select'].remove('example-shorthand-group')
+	 				}
+	 				else if (id == 'delete-m') {
+	 					FORM.select['my-multiple-select'].remove({ value: event.target.dataset.value })
+	 				}
 					else if (id == 'destroy-m') {
 						FORM.select['my-multiple-select'].destroy()
 					}
