@@ -183,6 +183,7 @@ class bsSelect {
 			document.querySelector("#select-toggle-checkbox-" + this.seq).addEventListener('click', function(event) {
 				for (let rnd of Object.keys(self.options)) {
 					if (self.optionGroups.includes(rnd)) {
+						self.options[rnd].selected = event.target.checked
 						document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked = event.target.checked
 						if (event.target.checked) {
 							document.querySelector("#select-option-group-wrapper-" + self.seq + "-" + rnd).classList.add("selected")
