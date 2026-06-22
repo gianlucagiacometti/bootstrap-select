@@ -1043,6 +1043,9 @@ class bsSelect {
 
 		}
 
+		this.#syncOptionGroups()
+		this.#syncToggleCheckbox()
+
 		this.sort(this.sorted)
 
 	} // insert
