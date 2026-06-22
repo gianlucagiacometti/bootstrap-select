@@ -776,10 +776,23 @@ class bsSelect {
 				let list
 				let parent
 console.log('insert parent argument', parents[index])
+console.log(
+	'available optgroups',
+	[...this.element.querySelectorAll('optgroup')].map(group => {
+		return {
+			id: group.id,
+			label: group.label,
+			rnd: group.dataset.rnd
+		}
+	})
+)
+				
 				if (parents[index]) {
 					if (typeof parents[index] === "string") {
 						let parentElement = this.element.querySelector('optgroup[id="' + parents[index] + '"]')
-					
+						if (!parentElement && Object.keys(this.options).includes(parents[index]) && this.optionGroups.includes(parents[index])) {
+							parentElement = this.options[parents[index]]
+						}
 						if (parentElement && parentElement.dataset.rnd) {
 							parent = parentElement.dataset.rnd
 							list = document.querySelector("#select-option-group-children-" + this.seq + "-" + parent)
