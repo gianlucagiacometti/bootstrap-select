@@ -398,7 +398,7 @@ class bsSelect {
 			let wrapper = document.querySelector("#select-option-group-wrapper-" + this.seq + "-" + rnd)
 			let groupSelected = selectable ? selected : this.options[rnd].selected
 			if (checkbox) {
-				checkbox.checked = selectable && selected
+				checkbox.checked = groupSelected
 			}
 			if (wrapper) {
 				if (groupSelected) {
@@ -408,7 +408,7 @@ class bsSelect {
 					wrapper.classList.remove("selected")
 				}
 			}
-			this.options[rnd].selected = selectable && selected
+			this.options[rnd].selected = groupSelected
 		}
 	}
 
