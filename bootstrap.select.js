@@ -780,6 +780,7 @@ class bsSelect {
 					if ((typeof parents[index] === "string") && document.querySelector("#" + parents[index])) {
 						let parentElement = document.querySelector("#" + parents[index])
 						if (parentElement.tagName === "OPTGROUP") {
+							onsole.log(parentElement, this.options)
 							for (let [rnd, obj] of Object.entries(this.options)) {
 								if (obj === parentElement) {
 									parent = rnd
