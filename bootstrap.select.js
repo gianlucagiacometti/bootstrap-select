@@ -982,6 +982,7 @@ class bsSelect {
 					console.warn("Warning: Trying to select a disabled option; use `.value(value, { disabled: true })` to select disabled options")
 				}
 			}
+			this.#dispatchChange()
 		}
 	}
 
