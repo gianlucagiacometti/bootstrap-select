@@ -515,6 +515,9 @@ class bsSelect {
 		for (let [pile, arr] of unsorted.entries()) {
 
 			for (let [index, rnd] of unsorted[pile].entries()) {
+				if (!self.options[rnd]) {
+					continue
+				}
 				if (self.optionParents[rnd] == parent) {
 					if (self.options[rnd].disabled) {
 						inactive.push(rnd)
