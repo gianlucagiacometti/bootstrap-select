@@ -939,17 +939,24 @@ class bsSelect {
 				if (options['swap']) {
 					for (let rnd of Object.keys(this.options)) {
 						this.options[rnd].selected = false
-						document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).classList.remove("selected")
-						document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked = false
+						if (this.optionGroups.includes(rnd)) {
+							document.querySelector("#select-option-group-wrapper-" + this.seq + "-" + rnd).classList.remove("selected")
+							document.querySelector("#select-option-group-checkbox-" + this.seq + "-" + rnd).checked = false
+						}
+						else {
+							document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).classList.remove("selected")
+							document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked = false
+						}
 					}
 				}
 				for (let rnd of Object.keys(this.options)) {
+					if (this.optionGroups.includes(rnd)) {
+						continue
+					}
 					if ((options['disabled'] || (!options['disabled'] && !this.options[rnd].disabled)) && (values.indexOf(this.options[rnd].value) >= 0)) {
 						this.options[rnd].selected = true
 						document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).classList.add("selected")
-						if (!options['disabled']) {
-							document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked = true
-						}
+						document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked = true
 					}
 					else if (this.options[rnd].disabled && (values.indexOf(this.options[rnd].value) >= 0)) {
 						console.warn("Warning: Trying to select the disabled option vith value " + this.options[rnd].value + "; use `.value(value, { disabled: true })` to select disabled options")
