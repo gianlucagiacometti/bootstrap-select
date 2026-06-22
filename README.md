@@ -21,7 +21,7 @@ Bootstrap >= 5.3
 
 Bootstrap Icons ^1 (used only by search and option images)
 
-NOTE: Version numbers follow the pattern `library-major.bootstrap-major.bootstrap-minor.patch`. For example, `1.5.3.x` means version `1.x` of this library targeting Bootstrap `5.3.x`.
+NOTE: Version numbers follow the Bootstrap version they target. For example, version `1.5.3` is release `1` of this library targeting Bootstrap `5.3`.
 
 
 ## Usage
