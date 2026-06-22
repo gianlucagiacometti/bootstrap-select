@@ -959,7 +959,7 @@ class bsSelect {
 						document.querySelector("#select-option-checkbox-" + this.seq + "-" + rnd).checked = true
 					}
 					else if (this.options[rnd].disabled && (values.indexOf(this.options[rnd].value) >= 0)) {
-						console.warn("Warning: Trying to select the disabled option vith value " + this.options[rnd].value + "; use `.value(value, { disabled: true })` to select disabled options")
+						console.warn("Warning: Trying to select the disabled option with value " + this.options[rnd].value + "; use `.value(value, { disabled: true })` to select disabled options")
 					}
 				}
 				document.querySelector("#select-input-" + this.seq).value = [...this.element.selectedOptions].map(item => item.text).join()
