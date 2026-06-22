@@ -901,6 +901,8 @@ class bsSelect {
 			options = [options]
 		}
 
+		let containsDivider = false
+
 		// valid parents are: object id, object index (0 or a random 16-digit integer)
 		if (parents && !Array.isArray(parents) && ((typeof parents === "string") || ((parents.toString().length == 16) && Number.isInteger(parents)))) {
 			parents = [parents]
@@ -919,6 +921,10 @@ class bsSelect {
 		for (let [index, option] of options.entries()) {
 
 			if (!!(option && option.nodeType === Node.ELEMENT_NODE && ["OPTION", "OPTGROUP"].includes(option.tagName))) {
+
+				if (option.dataset.bsSelectOptionDivider || option.querySelector('[data-bs-select-option-divider]')) {
+					containsDivider = true
+				}
 
 				let list
 				let parent
@@ -1122,7 +1128,9 @@ class bsSelect {
 		this.#syncOptionGroups()
 		this.#syncToggleCheckbox()
 
-		this.sort(this.sorted)
+		if (!containsDivider) {
+			this.sort(this.sorted)
+		}
 
 	} // insert
 
