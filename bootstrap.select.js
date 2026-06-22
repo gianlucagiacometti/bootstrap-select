@@ -345,6 +345,18 @@ class bsSelect {
 		this.element.dispatchEvent(new Event("change", { bubbles: true }))
 	}
 
+	#removeOptionElement(rnd) {
+		if (this.optionGroups.includes(rnd)) {
+			document.querySelector("#select-option-group-wrapper-" + this.seq + "-" + rnd).remove()
+		}
+		else {
+			document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).remove()
+		}
+	
+		this.options[rnd].remove()
+		delete this.options[rnd]
+	}
+
 	#wrapOptions(children, parent = 0) {
 		let list = ""
 		let pile = 0
@@ -722,9 +734,7 @@ class bsSelect {
 				for (let value of obj['values']) {
 					for (let rnd of Object.keys(this.options)) {
 						if (this.options[rnd].value == value) {
-							document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).remove()
-							this.options[rnd].remove()
-							delete this.options[rnd]
+							this.#removeOptionElement(rnd)
 							removed = true
 						}
 					}
@@ -742,9 +752,7 @@ class bsSelect {
 				for (let id of obj['ids']) {
 					for (let rnd of Object.keys(this.options)) {
 						if (this.options[rnd].id == id) {
-							document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).remove()
-							this.options[rnd].remove()
-							delete this.options[rnd]
+							this.#removeOptionElement(rnd)
 							removed = true
 						}
 					}
@@ -753,9 +761,7 @@ class bsSelect {
 			if ("index" in obj) {
 				for (let rnd of Object.keys(this.options)) {
 					if (rnd == obj['index']) {
-						document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).remove()
-						this.options[rnd].remove()
-						delete this.options[rnd]
+						this.#removeOptionElement(rnd)
 						removed = true
 					}
 				}
