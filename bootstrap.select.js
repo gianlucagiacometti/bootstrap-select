@@ -269,6 +269,7 @@ class bsSelect {
 						}
 						self.options[rnd].selected = true
 						document.querySelector("#" + self.id).value = self.options[rnd].value
+						self.#dispatchChange()
 					}
 					e.preventDefault()
 				})
