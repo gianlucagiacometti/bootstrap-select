@@ -843,6 +843,19 @@ class bsSelect {
 				this.optionParents[rnd] = parent
 				this.optionPiles[parent][0].push(rnd)
 
+				if (!this.multiple && option.selected) {
+					for (let i of Object.keys(this.options)) {
+						if (i != rnd && !this.optionGroups.includes(i)) {
+							this.options[i].selected = false
+							document.querySelector("#select-option-wrapper-" + this.seq + "-" + i).classList.remove("selected")
+						}
+					}
+					document.querySelector("#select-input-" + this.seq).value = option.text
+				}
+				else if (this.multiple && option.selected) {
+					document.querySelector("#select-input-" + this.seq).value = [...this.element.selectedOptions].map(item => item.text).join()
+				}
+
 				if (!option.disabled) {
 					let self = this
 					document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).addEventListener('click', function(e) {
