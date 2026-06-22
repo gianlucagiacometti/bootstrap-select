@@ -994,8 +994,14 @@ class bsSelect {
 				let itemDisabled = option.disabled ? ' disabled' : ''
 				let itemSelected = option.selected ? ' selected' : ''
 				let itemChecked = option.selected && !option.disabled ? ' checked' : ''
-				let iconClass = option.dataset.bsSelectOptionIconClass ? ' ' + option.dataset.bsSelectOptionIconClass : ''
-				let icon = option.dataset.bsSelectOptionIcon ? '<i class="bi bi-' + option.dataset.bsSelectOptionIcon + ' me-2' + iconClass + '"></i>' : ''
+				let iconClass = option.dataset.bsSelectOptionIconClass ? option.dataset.bsSelectOptionIconClass : ''
+				let icon = ""
+				if (option.dataset.bsSelectOptionIcon) {
+				    icon = '<i class="bi bi-' + option.dataset.bsSelectOptionIcon + ' me-2' + (iconClass ? ' ' + iconClass : '') + '"></i>'
+				}
+				else if (iconClass) {
+				    icon = '<i class="me-2 ' + iconClass + '"></i>'
+				}
 				let imageClass = option.dataset.bsSelectOptionImageClass ? ' ' + option.dataset.bsSelectOptionImageClass : ''
 				let image = option.dataset.bsSelectOptionImage ? '<span class="select-option-image-wrapper"><img class="select-option-image' + imageClass + '" src="' +  option.dataset.bsSelectOptionImage + '"></span>' : ''
 				let comment = option.dataset.bsSelectOptionComment ? '<div class="select-option-comment">' + option.dataset.bsSelectOptionComment + '</div>' : ''
