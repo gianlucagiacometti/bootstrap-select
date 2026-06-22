@@ -463,8 +463,14 @@ class bsSelect {
 			let itemDisabled = child.disabled ? ' disabled' : ''
 			let itemSelected = child.selected ? ' selected' : ''
 			let itemChecked = child.selected && !child.disabled ? ' checked' : ''
-			let iconClass = child.dataset.bsSelectOptionIconClass ? ' ' + child.dataset.bsSelectOptionIconClass : ''
-			let icon = child.dataset.bsSelectOptionIcon ? '<i class="bi bi-' + child.dataset.bsSelectOptionIcon + ' me-2' + iconClass + '"></i>' : ''
+			let iconClass = child.dataset.bsSelectOptionIconClass ? child.dataset.bsSelectOptionIconClass : ''
+			let icon = ""
+			if (child.dataset.bsSelectOptionIcon) {
+			    icon = '<i class="bi bi-' + child.dataset.bsSelectOptionIcon + ' me-2' + (iconClass ? ' ' + iconClass : '') + '"></i>'
+			}
+			else if (iconClass) {
+			    icon = '<i class="me-2 ' + iconClass + '"></i>'
+			}
 			let imageClass = child.dataset.bsSelectOptionImageClass ? ' ' + child.dataset.bsSelectOptionImageClass : ''
 			let image = child.dataset.bsSelectOptionImage ? '<span class="select-option-image-wrapper"><img class="select-option-image' + imageClass + '" src="' +  child.dataset.bsSelectOptionImage + '" alt=""></span>' : ''
 			let comment = child.dataset.bsSelectOptionComment ? '<div class="select-option-comment">' + this.#cleanComment(child.dataset.bsSelectOptionComment) + '</div>' : ''
