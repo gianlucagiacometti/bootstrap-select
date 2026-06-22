@@ -173,19 +173,33 @@ class bsSelect {
 				inputField.focus();
 			}
 		})
-
+		
 		if (this.element.multiple && this.element.dataset.bsSelectToggleButton) {
 			let self = this
 			document.querySelector("#select-toggle-checkbox-" + this.seq).addEventListener('click', function(event) {
 				for (let rnd of Object.keys(self.options)) {
-					self.options[rnd].selected = event.target.checked
 					if (self.optionGroups.includes(rnd)) {
 						document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked = event.target.checked
+						if (event.target.checked) {
+							document.querySelector("#select-option-group-wrapper-" + self.seq + "-" + rnd).classList.add("selected")
+						}
+						else {
+							document.querySelector("#select-option-group-wrapper-" + self.seq + "-" + rnd).classList.remove("selected")
+						}
 					}
-					else {
+					else if (!self.options[rnd].disabled) {
+						self.options[rnd].selected = event.target.checked
 						document.querySelector("#select-option-checkbox-" + self.seq + "-" + rnd).checked = event.target.checked
+						if (event.target.checked) {
+							document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.add("selected")
+						}
+						else {
+							document.querySelector("#select-option-wrapper-" + self.seq + "-" + rnd).classList.remove("selected")
+						}
 					}
 				}
+				document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
+				self.#dispatchChange()
 			})
 		}
 
