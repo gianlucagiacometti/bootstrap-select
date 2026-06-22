@@ -779,15 +779,9 @@ class bsSelect {
 				if (parents[index]) {
 					if ((typeof parents[index] === "string") && document.querySelector("#" + parents[index])) {
 						let parentElement = document.querySelector("#" + parents[index])
-						if (parentElement.tagName === "OPTGROUP") {
-							console.log(parentElement, this.options)
-							for (let [rnd, obj] of Object.entries(this.options)) {
-								if (obj === parentElement) {
-									parent = rnd
-									list = document.querySelector("#select-option-group-children-" + this.seq + "-" + rnd)
-									break
-								}
-							}
+						if (parentElement.tagName === "OPTGROUP" && parentElement.dataset.rnd) {
+							parent = parentElement.dataset.rnd
+							list = document.querySelector("#select-option-group-children-" + this.seq + "-" + parent)
 						}
 					}
 					else if ((typeof parents[index] === "number") && Object.keys(this.options).includes(parents[index]) && this.optionGroups.includes(parents[index])) {
