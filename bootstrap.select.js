@@ -296,7 +296,7 @@ class bsSelect {
 					document.querySelector("#select-option-group-wrapper-" + this.seq + "-" + rnd).classList.add("selected")
 				}
 				else {
-					document.querySelector("#select-optiongroup--wrapper-" + this.seq + "-" + rnd).classList.remove("selected")
+					document.querySelector("#select-option-group-wrapper-" + this.seq + "-" + rnd).classList.remove("selected")
 				}
 				this.#setDescendantsAlike(child)
 			}
