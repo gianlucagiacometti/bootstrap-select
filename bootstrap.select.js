@@ -820,6 +820,7 @@ class bsSelect {
 
 		if (removed) {
 			document.querySelector("#select-input-" + this.seq).value = [...this.element.selectedOptions].map(item => item.text).join()
+			this.#syncToggleCheckbox()
 			this.#dispatchChange()
 		}
 
@@ -1064,6 +1065,7 @@ class bsSelect {
 					console.warn("Warning: Trying to select a disabled option; use `.value(value, { disabled: true })` to select disabled options")
 				}
 			}
+			this.#syncToggleCheckbox()
 			this.#dispatchChange()
 		}
 	}
