@@ -762,6 +762,9 @@ class bsSelect {
 			console.warn("Warning: Argument of bsSelect.remove() must be a valid hash like { value: 'value', values: ['value1', 'value2'], id: 'id', ids: ['id1', 'id2'], index: 'valid select-option index' }")
 		}
 
+		document.querySelector("#select-input-" + this.seq).value = [...this.element.selectedOptions].map(item => item.text).join()
+		this.#dispatchChange()
+
 	} // remove
 
 	insert(options, parents) {
