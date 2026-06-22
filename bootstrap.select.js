@@ -1052,7 +1052,13 @@ class bsSelect {
 			status = false
 		}
 		this.element.disabled = status
-		document.querySelector("#select-input-" + this.seq).disabled = status
+		let input = document.querySelector("#select-input-" + this.seq)
+		let dropdown = document.querySelector("#select-dropdown-wrapper-" + this.seq)
+		input.disabled = status
+		input.setAttribute("aria-disabled", status ? "true" : "false")
+		if (status) {
+			dropdown.classList.remove("show")
+		}
 	}
 
 	readonly(status) {
