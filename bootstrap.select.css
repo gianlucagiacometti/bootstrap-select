@@ -59,6 +59,10 @@
   position: absolute;
   right: 0.25rem;
   bottom: 0.3rem;
+  z-index: 5;
+}
+.select-toggle-checkbox.form-check-input {
+  border-color: var(--bs-secondary);
 }
 .select-search-wrapper {
   margin-bottom: 0.25rem;
