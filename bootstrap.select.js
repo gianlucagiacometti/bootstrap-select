@@ -370,6 +370,40 @@ class bsSelect {
 		})
 	}
 
+	#syncOptionGroups() {
+		if (!this.element.multiple) {
+			return
+		}
+		for (let rnd of this.optionGroups) {
+			let selected = true
+			let selectable = false
+			for (let child of this.options[rnd].children) {
+				if (child.disabled) {
+					continue
+				}
+				selectable = true
+				if (!child.selected) {
+					selected = false
+					break
+				}
+			}
+			let checkbox = document.querySelector("#select-option-group-checkbox-" + this.seq + "-" + rnd)
+			let wrapper = document.querySelector("#select-option-group-wrapper-" + this.seq + "-" + rnd)
+			if (checkbox) {
+				checkbox.checked = selectable && selected
+			}
+			if (wrapper) {
+				if (selectable && selected) {
+					wrapper.classList.add("selected")
+				}
+				else {
+					wrapper.classList.remove("selected")
+				}
+			}
+			this.options[rnd].selected = selectable && selected
+		}
+	}
+
 	#removeFromOptionPiles(rnd) {
 		for (let parent of Object.keys(this.optionPiles)) {
 			for (let pile of Object.keys(this.optionPiles[parent])) {
@@ -820,6 +854,7 @@ class bsSelect {
 
 		if (removed) {
 			document.querySelector("#select-input-" + this.seq).value = [...this.element.selectedOptions].map(item => item.text).join()
+			this.#syncOptionGroups()
 			this.#syncToggleCheckbox()
 			this.#dispatchChange()
 		}
@@ -1065,6 +1100,7 @@ class bsSelect {
 					console.warn("Warning: Trying to select a disabled option; use `.value(value, { disabled: true })` to select disabled options")
 				}
 			}
+			this.#syncOptionGroups()
 			this.#syncToggleCheckbox()
 			this.#dispatchChange()
 		}
