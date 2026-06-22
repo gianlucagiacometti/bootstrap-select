@@ -967,6 +967,12 @@ class bsSelect {
 				this.optionParents[rnd] = parent
 				this.optionPiles[parent][0].push(rnd)
 
+				if (option.tagName === "OPTGROUP") {
+					this.optionGroups.push(rnd)
+					this.optionPiles[rnd] = {}
+					this.optionPiles[rnd][0] = []
+				}
+
 				if (!this.multiple && option.selected) {
 					for (let i of Object.keys(this.options)) {
 						if (i != rnd && !this.optionGroups.includes(i)) {
@@ -986,7 +992,7 @@ class bsSelect {
 					this.#dispatchChange()
 				}
 
-				if (!option.disabled) {
+				if (!option.disabled && option.tagName === "OPTION") {
 					let self = this
 					document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd).addEventListener('click', function(e) {
 						if (self.multiple) {
@@ -1029,6 +1035,18 @@ class bsSelect {
 							self.options[rnd].selected = true
 							document.querySelector("#" + self.id).value = self.options[rnd].value
 						}
+						self.#syncOptionGroups()
+						self.#syncToggleCheckbox()
+						self.#dispatchChange()
+						e.preventDefault()
+					})
+				}
+				else if (!option.disabled && option.tagName === "OPTGROUP" && this.multiple) {
+					let self = this
+					document.querySelector("#select-option-group-wrapper-" + this.seq + "-" + rnd + " > div.form-check").addEventListener('click', function(e) {
+						document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked = !document.querySelector("#select-option-group-checkbox-" + self.seq + "-" + rnd).checked
+						self.#setDescendantsAlike(self.options[rnd])
+						document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
 						self.#syncOptionGroups()
 						self.#syncToggleCheckbox()
 						self.#dispatchChange()
