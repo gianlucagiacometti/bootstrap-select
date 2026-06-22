@@ -822,6 +822,10 @@ class bsSelect {
 			if ("values" in obj && Array.isArray(obj['values']) && obj['values'].length) {
 				for (let value of obj['values']) {
 					for (let rnd of Object.keys(this.options)) {
+						if (!this.options[rnd]) {
+							continue
+						}
+
 						if (this.options[rnd].value == value) {
 							this.#removeOptionElement(rnd)
 							removed = true
@@ -840,6 +844,10 @@ class bsSelect {
 			if ("ids" in obj && Array.isArray(obj['ids']) && obj['ids'].length) {
 				for (let id of obj['ids']) {
 					for (let rnd of Object.keys(this.options)) {
+						if (!this.options[rnd]) {
+							continue
+						}
+
 						if (this.options[rnd].id == id) {
 							this.#removeOptionElement(rnd)
 							removed = true
@@ -849,6 +857,10 @@ class bsSelect {
 			}
 			if ("index" in obj) {
 				for (let rnd of Object.keys(this.options)) {
+					if (!this.options[rnd]) {
+						continue
+					}
+
 					if (rnd == obj['index']) {
 						this.#removeOptionElement(rnd)
 						removed = true
