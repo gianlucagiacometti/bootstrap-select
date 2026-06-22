@@ -324,6 +324,10 @@ class bsSelect {
 		return wrapper.innerHTML
 	}
 
+	#dispatchChange() {
+		this.element.dispatchEvent(new Event("change", { bubbles: true }))
+	}
+
 	#wrapOptions(children, parent = 0) {
 		let list = ""
 		let pile = 0
