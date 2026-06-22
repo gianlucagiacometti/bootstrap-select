@@ -51,6 +51,10 @@
   bottom: 1rem !important;
   right: 0.6rem !important;
 }
+.select-input.readonly {
+  cursor: default;
+  background-color: var(--bs-secondary-bg);
+}
 .select-dropdown-wrapper {
   width: 100% !important;
   padding: 0.25rem;
