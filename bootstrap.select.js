@@ -260,6 +260,7 @@ class bsSelect {
 							}
 						}
 						document.querySelector("#select-input-" + self.seq).value = [...self.element.selectedOptions].map(item => item.text).join()
+						self.#dispatchChange()
 					}
 					else {
 						document.querySelector("#select-input-" + self.seq).value = document.querySelectorAll("#select-option-wrapper-" + self.seq + "-" + rnd + " .select-option-text")[0].innerHTML
