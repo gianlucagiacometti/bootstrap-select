@@ -16,11 +16,11 @@ This program is released under the MIT licence.
 
 ## Requirements
 
-Bootstrap >= 5.2.2
+Bootstrap >= 5.3
 
-Boostrap Icons >= 1.9 (used only by search and option images)
+Boostrap Icons ^1 (used only by search and option images)
 
-NOTE: Version numbers will follow the version numbers of Bootstrap releases (i.e. 1.<b>5.2.2</b>.1 - Bootstrap release version in bold)
+NOTE: Version numbers will follow the version numbers of Bootstrap releases (i.e. 1.<b>5.3.x</b>.1 - Bootstrap release version in bold)
 
 
 ## Usage
