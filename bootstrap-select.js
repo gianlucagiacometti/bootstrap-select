@@ -1263,13 +1263,20 @@ class bsSelect {
 	}
 
 	destroy() {
-		document.querySelector("#select-wrapper-" + this.seq).after(this.element)
-		this.element.after(this.label)
-		document.querySelector("#select-wrapper-" + this.seq).remove()
-		this.element.classList.remove("bootstrap-select", "d-none")
-		this.label.classList.remove("d-none")
-	} // destroy
+		let wrapper = document.querySelector("#select-wrapper-" + this.seq)
 
+		if (wrapper) {
+			wrapper.after(this.element)
+			this.element.after(this.label)
+			wrapper.remove()
+		}
+
+		this.element.classList.remove("bootstrap-select", "d-none")
+
+		if (this.label) {
+			this.label.classList.remove("d-none")
+		}
+	} // destroy
 }
 
 // all select dropdowns will be closed with the Escape key
