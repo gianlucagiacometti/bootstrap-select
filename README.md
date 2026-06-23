@@ -41,8 +41,8 @@ Bootstrap Icons ^1 (used only by search and option images)
 
 Add these lines in the html &lt;head&gt; section:
 
-    <link rel="stylesheet" href="bootstrap.select.css">
-    <script src="bootstrap.select.js"></script>
+    <link rel="stylesheet" href="bootstrap-select.css">
+    <script src="bootstrap-select.js"></script>
 
 NOTE: the values of "href" and "src" attributes must reproduce the folder structure where the two files are located.
 
