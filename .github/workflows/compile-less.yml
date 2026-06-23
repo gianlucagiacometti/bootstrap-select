@@ -28,10 +28,10 @@ jobs:
         run: npm install -g less
 
       - name: Compile LESS
-        run: lessc bootstrap.select.less bootstrap.select.css
+        run: lessc bootstrap-select.less bootstrap-select.css
 
       - name: Commit compiled CSS
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Compile LESS to CSS
-          file_pattern: bootstrap.select.css
+          file_pattern: bootstrap-select.css
