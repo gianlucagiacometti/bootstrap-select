@@ -15,13 +15,26 @@ The bsSelect class uses the Input and Dropdown elements of Bootstrap, for a maxi
 This program is released under the MIT licence.
 
 
+## Versioning
+
+Bootstrap Select versions follow the supported Bootstrap compatibility line.
+
+For example:
+
+- `5.3.x` targets Bootstrap `5.3.x`.
+- `5.4.x` will target Bootstrap `5.4.x`, if Bootstrap introduces changes that require a dedicated compatibility line.
+- `6.x.y` will target Bootstrap `6.x`.
+
+Patch versions inside each compatibility line are used for fixes and small improvements.
+
+Older `1.x` versions are historical package versions. Starting with `5.3.1`, the package version follows the Bootstrap compatibility line.
+
+
 ## Requirements
 
 Bootstrap >= 5.3
 
 Bootstrap Icons ^1 (used only by search and option images)
-
-NOTE: Version numbers follow the Bootstrap version they target. For example, version `1.5.3` is release `1` of this library targeting Bootstrap `5.3`.
 
 
 ## Usage
