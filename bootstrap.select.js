@@ -1284,28 +1284,27 @@ document.querySelector("html").addEventListener('keydown', (event) => {
 
 // all select dropdowns will be closed when clicking outside them
 document.addEventListener('click', (event) => {
-    let wrappers = document.querySelectorAll('.select-wrapper')
+	let wrappers = document.querySelectorAll('.select-wrapper')
 
-    for (let wrapper of wrappers) {
-        if (wrapper.contains(event.target)) {
-            continue
-        }
+	for (let wrapper of wrappers) {
+		if (wrapper.contains(event.target)) {
+			continue
+		}
 
-        let dropdown = wrapper.querySelector('.select-dropdown-wrapper')
-        let inputWrapper = wrapper.querySelector('.select-input-wrapper')
+		let dropdown = wrapper.querySelector('.select-dropdown-wrapper')
+		let inputWrapper = wrapper.querySelector('.select-input-wrapper')
 
-        if (dropdown) {
-            dropdown.classList.remove("show")
-        }
+		if (dropdown) {
+			dropdown.classList.remove("show")
+		}
 
-        if (inputWrapper && typeof bootstrap !== "undefined" && bootstrap.Dropdown) {
-            let instance = bootstrap.Dropdown.getInstance(inputWrapper)
-
-            if (instance) {
-                instance.hide()
-            }
-        }
-    }
+		if (inputWrapper && typeof bootstrap !== "undefined" && bootstrap.Dropdown) {
+			let instance = bootstrap.Dropdown.getInstance(inputWrapper)
+			if (instance) {
+				instance.hide()
+			}
+		}
+	}
 })
 
 // a new element of the class will be created as soon as a SELECT element with class bootstrap-select is injected or as soon as the class is added to an existing SELECT
