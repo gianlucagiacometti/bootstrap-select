@@ -1282,6 +1282,21 @@ document.querySelector("html").addEventListener('keydown', (event) => {
 	}
 })
 
+// all select dropdowns will be closed when clicking outside them
+document.addEventListener('click', (event) => {
+    let wrappers = document.querySelectorAll('.select-wrapper')
+
+    for (let wrapper of wrappers) {
+        if (!wrapper.contains(event.target)) {
+            let dropdown = wrapper.querySelector('.select-dropdown-wrapper')
+
+            if (dropdown) {
+                dropdown.classList.remove("show")
+            }
+        }
+    }
+})
+
 // a new element of the class will be created as soon as a SELECT element with class bootstrap-select is injected or as soon as the class is added to an existing SELECT
 // a new element of the class may be created manually if the SELECT has no bootstrap-select class
 let insertListener = (e) => {
