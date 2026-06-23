@@ -1287,11 +1287,22 @@ document.addEventListener('click', (event) => {
     let wrappers = document.querySelectorAll('.select-wrapper')
 
     for (let wrapper of wrappers) {
-        if (!wrapper.contains(event.target)) {
-            let dropdown = wrapper.querySelector('.select-dropdown-wrapper')
+        if (wrapper.contains(event.target)) {
+            continue
+        }
 
-            if (dropdown) {
-                dropdown.classList.remove("show")
+        let dropdown = wrapper.querySelector('.select-dropdown-wrapper')
+        let inputWrapper = wrapper.querySelector('.select-input-wrapper')
+
+        if (dropdown) {
+            dropdown.classList.remove("show")
+        }
+
+        if (inputWrapper && typeof bootstrap !== "undefined" && bootstrap.Dropdown) {
+            let instance = bootstrap.Dropdown.getInstance(inputWrapper)
+
+            if (instance) {
+                instance.hide()
             }
         }
     }
