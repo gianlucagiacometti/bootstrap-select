@@ -466,10 +466,10 @@ class bsSelect {
 			let iconClass = child.dataset.bsSelectOptionIconClass ? child.dataset.bsSelectOptionIconClass : ''
 			let icon = ""
 			if (child.dataset.bsSelectOptionIcon) {
-			    icon = '<i class="bi bi-' + child.dataset.bsSelectOptionIcon + ' me-2' + (iconClass ? ' ' + iconClass : '') + '"></i>'
+				icon = '<i class="bi bi-' + child.dataset.bsSelectOptionIcon + ' me-2' + (iconClass ? ' ' + iconClass : '') + '"></i>'
 			}
 			else if (iconClass) {
-			    icon = '<i class="me-2 ' + iconClass + '"></i>'
+				icon = '<i class="me-2 ' + iconClass + '"></i>'
 			}
 			let imageClass = child.dataset.bsSelectOptionImageClass ? ' ' + child.dataset.bsSelectOptionImageClass : ''
 			let image = child.dataset.bsSelectOptionImage ? '<span class="select-option-image-wrapper"><img class="select-option-image' + imageClass + '" src="' +  child.dataset.bsSelectOptionImage + '" alt=""></span>' : ''
