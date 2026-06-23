@@ -1,6 +1,15 @@
 Bootstrap Select
 ================
 
+Version 5.3.1 (2026-06-23, Bootstrap 5.3.x)
+===========================================
+
+- Changed package versioning to follow the supported Bootstrap compatibility line.
+- Fixed custom option icon classes so `data-bs-select-option-icon-class` works without requiring `data-bs-select-option-icon`.
+- Added outside-click closing for open select dropdowns.
+- Confirmed compatibility with Bootstrap 5.3.x.
+
+
 Version 1.5.3 (2026-06-22, Bootstrap 5.3)
 =========================================
 
