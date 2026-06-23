@@ -1,6 +1,16 @@
 Bootstrap Select
 ================
 
+Version 5.3.2 (2026-06-23, Bootstrap 5.3.x)
+===========================================
+
+- Renamed distributable assets from `bootstrap.select.js` and `bootstrap.select.css` to `bootstrap-select.js` and `bootstrap-select.css`.
+- Updated LESS compilation workflow to build `bootstrap-select.css` from the renamed LESS source file.
+- Updated example page references to use the renamed distributable assets.
+- Updated example page dependencies to Bootstrap 5.3.8 and Bootstrap Icons 1.13.1.
+- Fixed example page metadata typo from `Boostrap` to `Bootstrap`.
+
+
 Version 5.3.1 (2026-06-23, Bootstrap 5.3.x)
 ===========================================
 
