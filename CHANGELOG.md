@@ -1,6 +1,14 @@
 Bootstrap Select
 ================
 
+Version 5.3.3 (2026-06-23, Bootstrap 5.3.x)
+===========================================
+
+- Fixed invalid CSS property `text-style` by replacing it with `font-style`.
+- Fixed option and option-group comment styling so italic comments render correctly.
+- Updated generated CSS from the corrected LESS source.
+
+
 Version 5.3.2 (2026-06-23, Bootstrap 5.3.x)
 ===========================================
 
