@@ -1,6 +1,14 @@
 Bootstrap Select
 ================
 
+Version 5.3.4 (2026-06-23, Bootstrap 5.3.x)
+===========================================
+
+- Made `destroy()` safer when the generated select wrapper is no longer present in the DOM.
+- Fixed a JavaScript error that could occur when destroying a select after AJAX-rendered content had already been replaced.
+- Restored the original select element and label only when the generated wrapper is still available.
+
+
 Version 5.3.3 (2026-06-23, Bootstrap 5.3.x)
 ===========================================
 
