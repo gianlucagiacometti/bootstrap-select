@@ -1,7 +1,7 @@
 {
-    "name": "gianlucagiacometti-bootstrap-pickadate-build",
+    "name": "gianlucagiacometti-bootstrap-select-build",
     "private": true,
-    "description": "Build tooling for gianlucagiacometti/bootstrap-pickadate assets.",
+    "description": "Build tooling for gianlucagiacometti/bootstrap-select assets.",
     "scripts": {
         "minify": "node scripts/minify-assets.js",
         "build": "npm run minify"
