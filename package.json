@@ -1,0 +1,16 @@
+{
+    "name": "gianlucagiacometti-bootstrap-pickadate-build",
+    "private": true,
+    "description": "Build tooling for gianlucagiacometti/bootstrap-pickadate assets.",
+    "scripts": {
+        "minify": "node scripts/minify-assets.js",
+        "build": "npm run minify"
+    },
+    "devDependencies": {
+        "clean-css": "^5",
+        "terser": "^5"
+    },
+    "engines": {
+        "node": ">=18"
+    }
+}
