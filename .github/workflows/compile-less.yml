@@ -1,0 +1,40 @@
+name: Compile LESS
+
+on:
+  push:
+    paths:
+      - "*.less"
+      - "**/*.less"
+      - ".github/workflows/compile-less.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compile-less:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Install LESS
+        run: npm install -g less
+
+      - name: Compile LESS
+        run: lessc bootstrap-select.less bootstrap-select.css
+
+      - name: Commit compiled CSS
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Compile LESS to CSS [skip ci]
+          file_pattern: bootstrap-select.css
