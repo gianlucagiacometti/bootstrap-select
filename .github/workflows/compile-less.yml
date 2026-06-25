@@ -3,8 +3,9 @@ name: Compile LESS
 on:
   push:
     paths:
-      - '**.less'
-      - '.github/workflows/compile-less.yml'
+      - "*.less"
+      - "**/*.less"
+      - ".github/workflows/compile-less.yml"
 
 permissions:
   contents: write
@@ -27,11 +28,22 @@ jobs:
       - name: Install LESS
         run: npm install -g less
 
+      - name: Install build dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install --no-audit --no-fund --no-package-lock
+          fi
+
       - name: Compile LESS
         run: lessc bootstrap-select.less bootstrap-select.css
 
-      - name: Commit compiled CSS
+      - name: Build minified assets
+        run: npm run minify
+
+      - name: Commit compiled and minified assets
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Compile LESS to CSS
-          file_pattern: bootstrap-select.css
+          commit_message: Compile LESS and build minified assets [skip ci]
+          file_pattern: bootstrap-select.css bootstrap-select.min.css bootstrap-select.min.js
