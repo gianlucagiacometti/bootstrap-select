@@ -61,9 +61,20 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add -A
-            git commit -m "Build minified assets [skip ci]"
-            git push
+            find . -type f \( -name "*.min.js" -o -name "*.min.css" \) \
+              -not -path "./node_modules/*" \
+              -not -path "./vendor/*" \
+              -not -path "./.git/*" \
+              -print0 | xargs -0 --no-run-if-empty git add --
+
+            if git diff --cached --quiet; then
+              echo "Minified assets are already up to date."
+            else
+              git config user.name "github-actions[bot]"
+              git config user.email "github-actions[bot]@users.noreply.github.com"
+              git commit -m "Build minified assets [skip ci]"
+              git push
+            fi
           else
             echo "Minified assets are already up to date."
           fi
