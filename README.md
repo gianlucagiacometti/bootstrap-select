@@ -37,6 +37,30 @@ Bootstrap >= 5.3
 Bootstrap Icons ^1 (used only by search and option images)
 
 
+## Optional jQuery integration
+
+Bootstrap Select is a plain JavaScript component and does not require jQuery.
+
+If you want a jQuery-style application layer, `gianlucagiacometti/web-toolbox` provides `jquery-bootstrap-select`. The wrapper keeps Bootstrap Select as the underlying component and adds jQuery initialisation, helper methods, and large-list rendering modes.
+
+```bash
+composer require gianlucagiacometti/web-toolbox
+```
+
+Suggested script order:
+
+```html
+<script src="/assets/jquery/jquery.min.js"></script>
+<script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/bootstrap-select/bootstrap-select.js"></script>
+<script src="/assets/jquery-bootstrap-select/jquery-bootstrap-select.js"></script>
+```
+
+```js
+$("select.bootstrap-select").jqueryBootstrapSelect();
+```
+
+
 ## Usage
 
 Add these lines in the html &lt;head&gt; section:
