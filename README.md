@@ -32,9 +32,8 @@ Older `1.x` versions are historical package versions. Starting with `5.3.1`, the
 
 ## Requirements
 
-Bootstrap Select 5.3.x
-
-Bootstrap Icons ^1 (used only by search and option images)
+- Bootstrap 5.3.x
+- Bootstrap Icons ^1 (used only by search and option images)
 
 
 ## Optional jQuery integration
