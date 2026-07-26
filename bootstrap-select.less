@@ -160,14 +160,27 @@
 			width: 100%;
 		}
 
+		&-copy {
+			display: flex;
+			flex: 1 1 auto;
+			flex-direction: column;
+			justify-content: center;
+			min-width: 0;
+		}
+		
 		&-text {
-			vertical-align: middle;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 
 			&-wrapper {
-				width: 100%;
+				display: flex;
+				flex: 1 1 auto;
+				align-items: center;
+				min-width: 0;
 
 				& > i {
-					vertical-align: middle;
+					flex: 0 0 auto;
 				}
 			}
 		}
@@ -184,8 +197,11 @@
 		&-comment {
 			font-size: .85rem;
 			font-style: italic;
-			padding: 0 .25rem .25rem .25rem;
-			transform: translateY(-0.5rem);
+			line-height: 1.2;
+			overflow: hidden;
+			padding: 0;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 		}
 
 		&-checkbox {
