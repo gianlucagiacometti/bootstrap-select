@@ -124,14 +124,26 @@
 .select-option-label {
   width: 100%;
 }
+.select-option-copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
 .select-option-text {
-  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .select-option-text-wrapper {
-  width: 100%;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
 }
 .select-option-text-wrapper > i {
-  vertical-align: middle;
+  flex: 0 0 auto;
 }
 .select-option-image {
   width: 28px;
@@ -143,8 +155,11 @@
 .select-option-comment {
   font-size: 0.85rem;
   font-style: italic;
-  padding: 0 0.25rem 0.25rem 0.25rem;
-  transform: translateY(-0.5rem);
+  line-height: 1.2;
+  overflow: hidden;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .select-option-checkbox {
   position: relative;
