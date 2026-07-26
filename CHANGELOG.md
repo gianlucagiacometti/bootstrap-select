@@ -1,6 +1,12 @@
 Bootstrap Select
 ================
 
+Version 5.3.5 (2026-07-26, Bootstrap 5.3.x)
+===========================================
+
+- Fixed image and secondary text layout.
+
+
 Version 5.3.4 (2026-06-23, Bootstrap 5.3.x)
 ===========================================
 
