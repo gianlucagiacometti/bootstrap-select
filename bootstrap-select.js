@@ -474,14 +474,15 @@ class bsSelect {
 			let imageClass = child.dataset.bsSelectOptionImageClass ? ' ' + child.dataset.bsSelectOptionImageClass : ''
 			let image = child.dataset.bsSelectOptionImage ? '<span class="select-option-image-wrapper"><img class="select-option-image' + imageClass + '" src="' +  child.dataset.bsSelectOptionImage + '" alt=""></span>' : ''
 			let comment = child.dataset.bsSelectOptionComment ? '<div class="select-option-comment">' + this.#cleanComment(child.dataset.bsSelectOptionComment) + '</div>' : ''
+			let optionContent = '<div class="select-option-text-wrapper">' + icon + '<div class="select-option-copy">' + '<span class="select-option-text">' + child.text + '</span>' + comment + '</div>' + '</div>'
 			if (child.tagName === "OPTION") {
 				if (!child.dataset.bsSelectOptionDivider) {
 					this.optionPiles[parent][pile].push(rnd)
 					if (this.multiple) {
-						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div class="form-check"><input type="checkbox" id="select-option-checkbox-' + this.seq + '-' + rnd + '" class="form-check-input select-option-checkbox" value="' + rnd + '"' + itemDisabled + itemChecked + '><label class="form-check-label select-option-label" for="select-option-checkbox-' + this.seq + '-' + rnd + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + itemDisabled + itemSelected + '" role="option"><span class="select-option-text-wrapper">' + icon + '<span class="select-option-text">' + child.text + '</span></span>' + image + '</div></label>' + comment + '</div></div>'
+						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div class="form-check"><input type="checkbox" id="select-option-checkbox-' + this.seq + '-' + rnd + '" class="form-check-input select-option-checkbox" value="' + rnd + '"' + itemDisabled + itemChecked + '><label class="form-check-label select-option-label" for="select-option-checkbox-' + this.seq + '-' + rnd + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + itemDisabled + itemSelected + '" role="option">' + optionContent + image + '</div></label></div></div>'
 					}
 					else {
-						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + '" role="option"><span class="select-option-text-wrapper">' + icon + '<span class="select-option-text">' + child.text + '</span></span>' + image + '</div>' + comment + '</div>'
+						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + '" role="option">' + optionContent + image + '</div></div>'
 					}
 				}
 				else {
@@ -1004,17 +1005,17 @@ class bsSelect {
 				}
 				let imageClass = option.dataset.bsSelectOptionImageClass ? ' ' + option.dataset.bsSelectOptionImageClass : ''
 				let image = option.dataset.bsSelectOptionImage ? '<span class="select-option-image-wrapper"><img class="select-option-image' + imageClass + '" src="' +  option.dataset.bsSelectOptionImage + '"></span>' : ''
+				let optionContent = '<div class="select-option-text-wrapper">' + icon + '<div class="select-option-copy">' + '<span class="select-option-text">' + child.text + '</span>' + comment + '</div>' + '</div>'
 				let comment = option.dataset.bsSelectOptionComment ? '<div class="select-option-comment">' + option.dataset.bsSelectOptionComment + '</div>' : ''
-
 				if (option.tagName === "OPTION") {
 					if (option.dataset.bsSelectOptionDivider) {
 						item = '<hr>'
 					}
 					else if (this.multiple) {
-						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div class="form-check"><input type="checkbox" id="select-option-checkbox-' + this.seq + '-' + rnd + '" class="form-check-input select-option-checkbox" value="' + rnd + '"' + itemDisabled + itemChecked + '><label class="form-check-label select-option-label" for="select-option-checkbox-' + this.seq + '-' + rnd + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + itemDisabled + itemSelected + '" role="option"><span class="select-option-text-wrapper">' + icon + '<span class="select-option-text">' + option.text + '</span></span>' + image + '</div></label>' + comment + '</div></div>'
+						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div class="form-check"><input type="checkbox" id="select-option-checkbox-' + this.seq + '-' + rnd + '" class="form-check-input select-option-checkbox" value="' + rnd + '"' + itemDisabled + itemChecked + '><label class="form-check-label select-option-label" for="select-option-checkbox-' + this.seq + '-' + rnd + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + itemDisabled + itemSelected + '" role="option">' + optionContent + image + '</div></label></div></div>'
 					}
 					else {
-						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + '" role="option"><span class="select-option-text-wrapper">' + icon + '<span class="select-option-text">' + option.text + '</span></span>' + image + '</div>' + comment + '</div>'
+						item = '<div id="select-option-wrapper-' + this.seq + '-' + rnd + '" class="select-option-wrapper' + itemDisabled + itemSelected + '"><div id="select-option-' + this.seq + '-' + rnd + '" class="select-option select-option-' + this.seq + '" role="option">' + optionContent + image + '</div></div>'
 					}
 				}
 				else if (option.tagName === "OPTGROUP") {
