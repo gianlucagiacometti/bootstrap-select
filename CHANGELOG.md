@@ -1,6 +1,14 @@
 Bootstrap Select
 ================
 
+
+Version 5.3.6 (2026-08-03, Bootstrap 5.3.x)
+===========================================
+
+- Fixed stale selected-option highlighting in single-select dropdowns.
+- Synchronised selection styling for normal clicks, inserted options and programmatic `value()` changes.
+
+
 Version 5.3.5 (2026-07-26, Bootstrap 5.3.x)
 ===========================================
 
