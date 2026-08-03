@@ -293,6 +293,7 @@ class bsSelect {
 							self.options[i].selected = false
 						}
 						self.options[rnd].selected = true
+						self.#syncSelectedWrappers()
 						document.querySelector("#" + self.id).value = self.options[rnd].value
 						self.#syncToggleCheckbox()
 						self.#dispatchChange()
@@ -365,6 +366,23 @@ class bsSelect {
 
 	#dispatchChange() {
 		this.element.dispatchEvent(new Event("change", { bubbles: true }))
+	}
+
+	#syncSelectedWrappers() {
+		if (this.multiple) {
+			return
+		}
+
+		for (let rnd of Object.keys(this.options)) {
+			if (this.optionGroups.includes(rnd)) {
+				continue
+			}
+
+			let wrapper = document.querySelector("#select-option-wrapper-" + this.seq + "-" + rnd)
+			if (wrapper) {
+				wrapper.classList.toggle("selected", this.options[rnd].selected)
+			}
+		}
 	}
 
 	#syncToggleCheckbox() {
@@ -1116,6 +1134,7 @@ class bsSelect {
 								self.options[i].selected = false
 							}
 							self.options[rnd].selected = true
+							self.#syncSelectedWrappers()
 							document.querySelector("#" + self.id).value = self.options[rnd].value
 						}
 						self.#syncOptionGroups()
@@ -1226,6 +1245,7 @@ class bsSelect {
 					console.warn("Warning: Trying to select a disabled option; use `.value(value, { disabled: true })` to select disabled options")
 				}
 			}
+			this.#syncSelectedWrappers()
 			this.#syncOptionGroups()
 			this.#syncToggleCheckbox()
 			this.#dispatchChange()
@@ -1334,4 +1354,5 @@ document.addEventListener("animationstart", insertListener)
 document.addEventListener("MSAnimationStart", insertListener)
 document.addEventListener("webkitAnimationStart", insertListener)
 
- /* END OF FILE */
+
+// END OF FILE
